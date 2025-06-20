@@ -55,7 +55,7 @@ export function ServiceCard({
         <p className="text-gray-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]">{description}</p>
       </div>
       <div className="w-full px-4 pb-6 flex flex-col items-center">
-        <div className="relative w-full">
+        <div className="relative w-full flex justify-center items-center">
           <button
             className="btn-primary"
             tabIndex={0}
@@ -65,7 +65,6 @@ export function ServiceCard({
           >
             {cta}
             <span className="shine" />
-            <span className="underline" />
           </button>
         </div>
       </div>

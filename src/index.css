@@ -369,38 +369,31 @@ html {
 }
 
 .btn-primary {
-  @apply bg-[var(--civic-accent)] text-white rounded-md px-6 py-2 relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200;
+  @apply bg-[var(--civic-accent)] text-white px-6 py-2 relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200;
+  border-radius: 100px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .btn-primary .shine {
   position: absolute;
-  left: -40%;
   top: 0;
+  left: -60%;
+  width: 60%;
   height: 100%;
-  width: 66%;
-  background: linear-gradient(90deg, #ffe066cc 0%, transparent 100%);
+  background: linear-gradient(90deg, #3380ffcc 0%, transparent 100%);
   opacity: 0;
-  border-radius: 0.375rem;
   pointer-events: none;
+  border-radius: 100px;
   transition: opacity 0.2s;
 }
-.btn-primary:hover .shine {
-  opacity: 0.8;
+.btn-primary:hover .shine,
+.btn-primary:focus .shine {
+  opacity: 1;
   animation: shine 0.7s linear;
 }
 
-.btn-primary .underline {
-  position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 6px;
-  height: 2px;
-  background: #0059b3; /* lighter blue */
-  border-radius: 2px;
-  transform: scaleX(0.2);
-  opacity: 0.7;
-  transition: transform 0.35s cubic-bezier(0.68,-0.55,0.27,1.55);
-  z-index: 2;
-}
-.btn-primary:hover .underline {
-  transform: scaleX(1);
-}
+/* Remove underline effect */
+.btn-primary .underline { display: none !important; }

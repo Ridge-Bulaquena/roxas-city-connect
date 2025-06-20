@@ -21,22 +21,24 @@ const Index = () => {
     setUserType(localStorage.getItem('userType') || 'resident');
   }, []);
 
-  return userType === 'visitor' ? (
-    <VisitorHome />
-  ) : (
-    <div className="min-h-screen bg-background text-foreground">
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation userType={userType} setUserType={setUserType} />
-      
-      <main className={`transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <HeroSection userType={userType} hasVoted={hasVoted} />
-        <ServicesGrid userType={userType} />
-        <ComplaintSystem />
-        <LiveDashboards userType={userType} />
-        <DigitalParticipation hasVoted={hasVoted} />
-        <OpenDataSpotlight />
-        <TourismFeed userType={userType} />
+      <main className={`flex-1 transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {userType === 'visitor' ? (
+          <VisitorHome />
+        ) : (
+          <>
+            <HeroSection userType={userType} hasVoted={hasVoted} />
+            <ServicesGrid userType={userType} />
+            <ComplaintSystem />
+            <LiveDashboards userType={userType} />
+            <DigitalParticipation hasVoted={hasVoted} />
+            <OpenDataSpotlight />
+            <TourismFeed userType={userType} />
+          </>
+        )}
       </main>
-      
       <Footer />
     </div>
   );

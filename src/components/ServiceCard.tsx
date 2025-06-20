@@ -57,15 +57,15 @@ export function ServiceCard({
       <div className="w-full px-4 pb-6 flex flex-col items-center">
         <div className="relative w-full">
           <button
-            className="w-full font-inter bg-[var(--civic-accent)] text-white rounded-lg shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 py-2 px-4 text-sm font-medium overflow-hidden relative"
-            style={{ boxShadow: "0 2px 8px rgba(0,64,128,0.08)" }}
+            className="btn-primary"
             tabIndex={0}
             onClick={onClick}
             aria-label={cta}
+            type="button"
           >
             {cta}
-            {/* Shine overlay for button */}
-            <span className="absolute left-[-40%] top-0 h-full w-2/3 bg-gradient-to-r from-white/60 to-transparent opacity-0 hover:opacity-80 rounded-lg pointer-events-none transition-opacity duration-200 animate-shine" />
+            <span className="shine" />
+            <span className="underline" />
           </button>
         </div>
       </div>

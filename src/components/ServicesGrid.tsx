@@ -1,247 +1,159 @@
+import { ServiceCard } from "./ServiceCard";
+import { motion } from "framer-motion";
 
-import { 
-  Heart, 
-  GraduationCap, 
-  Shield, 
-  Building, 
-  Briefcase, 
-  Camera,
-  ArrowRight,
-  BarChart3,
-  Hammer,
-  Leaf,
-  Wheat,
-  Users,
-  Database,
-  Vote
-} from "lucide-react";
-import { useEffect, useState } from "react";
+const SERVICES = [
+  {
+    icon: "🏥",
+    title: "Health Services",
+    tooltip: "Find nearby health stations, track medicine supply, and report health concerns — instantly.",
+    cta: "Access Health Support",
+    ctaTooltip: "Get care that responds to your needs.",
+    route: "/health-services/",
+  },
+  {
+    icon: "🎓",
+    title: "Education Support",
+    tooltip: "Scholarships, feeding programs, teacher training — everything for lifelong learning.",
+    cta: "Support Learners",
+    ctaTooltip: "Fuel futures through inclusive education.",
+    route: "/education-support/",
+  },
+  {
+    icon: "👨‍👩‍👧‍👦",
+    title: "Social Welfare",
+    tooltip: "Support for PWDs, seniors, solo parents, and indigents. Leave no one behind.",
+    cta: "Uplift Communities",
+    ctaTooltip: "Compassion in action.",
+    route: "/social-welfare/",
+  },
+  {
+    icon: "🏛️",
+    title: "Governance & Transparency",
+    tooltip: "See budgets, projects, procurement logs. Accountability in plain sight.",
+    cta: "Track Governance",
+    ctaTooltip: "Transparency is the first step to trust.",
+    route: "/governance-transparency/",
+  },
+  {
+    icon: "🚧",
+    title: "Public Works & Infrastructure",
+    tooltip: "Monitor roads, drainage, housing, and public facilities. Real-time progress, real impact.",
+    cta: "View City Projects",
+    ctaTooltip: "Watch Roxas transform.",
+    route: "/public-works-infrastructure/",
+  },
+  {
+    icon: "🌱",
+    title: "Environmental Management",
+    tooltip: "Clean water, clean air, waste management. Your environment matters.",
+    cta: "Protect Our Environment",
+    ctaTooltip: "A greener Roxas begins here.",
+    route: "/environmental-management/",
+  },
+  {
+    icon: "🌾",
+    title: "Agriculture & Fishery Support",
+    tooltip: "Empowering farmers and fisherfolk with access, tools, and training.",
+    cta: "Support Local Producers",
+    ctaTooltip: "Grow with Roxas. Feed the nation.",
+    route: "/agriculture-fishery-support/",
+  },
+  {
+    icon: "🕊️",
+    title: "Peace & Order",
+    tooltip: "Safe streets. Fair enforcement. Community-driven safety programs.",
+    cta: "Promote Safety",
+    ctaTooltip: "Your peace of mind is our priority.",
+    route: "/peace-order/",
+  },
+  {
+    icon: "📊",
+    title: "Open Data Portal",
+    tooltip: "Full data access for journalists, developers, and everyday citizens.",
+    cta: "Explore Open Data",
+    ctaTooltip: "Truth has nothing to hide.",
+    route: "/open-data-portal/",
+  },
+  {
+    icon: "🗳️",
+    title: "Digital Participation",
+    tooltip: "Public consultations, community polls, and participatory budgeting — online.",
+    cta: "Engage Digitally",
+    ctaTooltip: "Be heard. Be counted.",
+    route: "/digital-participation/",
+  },
+  {
+    icon: "💼",
+    title: "Business Support",
+    tooltip: "From permits to mentorship — we champion Roxas' entrepreneurs.",
+    cta: "Start or Grow Your Business",
+    ctaTooltip: "Prosperity begins with partnership.",
+    route: "/business-support/",
+  },
+  {
+    icon: "🏖️",
+    title: "Tourism & Culture",
+    tooltip: "Celebrate heritage, festivals, and local artistry — experience Roxas.",
+    cta: "Explore Roxas Culture",
+    ctaTooltip: "A city rich in soul and story.",
+    route: "/tourism-culture/",
+  },
+];
 
-interface ServicesGridProps {
-  userType: 'resident' | 'official' | 'visitor';
-}
-
-export const ServicesGrid = ({ userType }: ServicesGridProps) => {
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleCards(prev => [...prev, index]);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach(card => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const services = [
-    {
-      title: "Health Services",
-      tooltip: "Access care, wherever you are.",
-      preview: "Clinics, hospitals, programs across Roxas",
-      route: "/health-services/",
-      icon: Heart,
-      color: "from-red-500 to-pink-600",
-      bgColor: "bg-red-50",
-      priority: userType === 'resident' ? 1 : 3
-    },
-    {
-      title: "Education Support", 
-      tooltip: "Building futures, one student at a time.",
-      preview: "Scholarships, digital classrooms",
-      route: "/education-support/",
-      icon: GraduationCap,
-      color: "from-blue-500 to-indigo-600",
-      bgColor: "bg-blue-50",
-      priority: userType === 'resident' ? 2 : 3
-    },
-    {
-      title: "Social Welfare",
-      tooltip: "We uplift the vulnerable — together.",
-      preview: "Support for seniors, PWDs, solo parents",
-      route: "/social-welfare/",
-      icon: Shield,
-      color: "from-green-500 to-emerald-600", 
-      bgColor: "bg-green-50",
-      priority: userType === 'resident' ? 2 : 3
-    },
-    {
-      title: "Governance & Transparency",
-      tooltip: "Track every peso. Monitor every promise.",
-      preview: "Budgets, KPIs, citizen accountability",
-      route: "/governance-transparency/",
-      icon: BarChart3,
-      color: "from-blue-600 to-cyan-600",
-      bgColor: "bg-blue-50",
-      priority: userType === 'official' ? 1 : 2
-    },
-    {
-      title: "Public Works & Infrastructure",
-      tooltip: "See what's being built.",
-      preview: "Ongoing infra timelines & budgets",
-      route: "/public-works-infrastructure/",
-      icon: Hammer,
-      color: "from-gray-500 to-slate-600",
-      bgColor: "bg-gray-50",
-      priority: userType === 'official' ? 1 : 2
-    },
-    {
-      title: "Environmental Management", 
-      tooltip: "Sustaining our city's future.",
-      preview: "Waste, coastal resilience programs",
-      route: "/environmental-management/",
-      icon: Leaf,
-      color: "from-green-600 to-teal-600",
-      bgColor: "bg-green-50",
-      priority: 2
-    },
-    {
-      title: "Agriculture & Fishery Support",
-      tooltip: "Supporting our farming and fishing communities.",
-      preview: "Livelihood programs, modern techniques",
-      route: "/agriculture-fishery-support/",
-      icon: Wheat,
-      color: "from-yellow-600 to-amber-600",
-      bgColor: "bg-yellow-50",
-      priority: 2
-    },
-    {
-      title: "Peace & Order",
-      tooltip: "Keeping our community safe.",
-      preview: "Public safety, community policing",
-      route: "/peace-order/",
-      icon: Users,
-      color: "from-purple-600 to-violet-600",
-      bgColor: "bg-purple-50",
-      priority: userType === 'resident' ? 2 : 3
-    },
-    {
-      title: "Open Data Portal",
-      tooltip: "Open by design.",
-      preview: "Access raw & visualized data",
-      route: "/open-data-portal/",
-      icon: Database,
-      color: "from-indigo-600 to-blue-600",
-      bgColor: "bg-indigo-50",
-      priority: userType === 'official' ? 1 : 3
-    },
-    {
-      title: "Digital Participation",
-      tooltip: "Be heard, be counted.",
-      preview: "Votes, forums, town halls",
-      route: "/digital-participation/",
-      icon: Vote,
-      color: "from-cyan-600 to-blue-500",
-      bgColor: "bg-cyan-50",
-      priority: userType === 'resident' ? 1 : 2
-    },
-    {
-      title: "Business Support", 
-      tooltip: "Support to grow and thrive.",
-      preview: "MSME assistance and incentives",
-      route: "/business-support/",
-      icon: Briefcase,
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-50",
-      priority: userType === 'visitor' ? 1 : 2
-    },
-    {
-      title: "Tourism & Culture",
-      tooltip: "Roxas, a place worth knowing.",
-      preview: "Events, heritage trails",
-      route: "/tourism-culture/",
-      icon: Camera,
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50",
-      priority: userType === 'visitor' ? 1 : 3
-    }
-  ];
-
-  const sortedServices = [...services].sort((a, b) => a.priority - b.priority);
-
+export const ServicesGrid = () => {
   return (
-    <section className="py-20 section-light">
+    <motion.section
+      className="py-20 section-light"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <motion.h2
+            className="text-4xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             City Services at Your Fingertips
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
             Comprehensive public services designed to serve every citizen, from healthcare to education, 
             infrastructure to cultural preservation.
-          </p>
+          </motion.p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {sortedServices.map((service, index) => {
-            const Icon = service.icon;
-            const isVisible = visibleCards.includes(index);
-            
-            return (
-              <div
-                key={service.title}
-                data-index={index}
-                className={`service-card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer hover-lift hover-glow ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
-                onClick={() => window.location.href = service.route}
-              >
-                {/* Glassy shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                
-                {/* Priority Badge */}
-                {service.priority === 1 && (
-                  <div className="absolute top-3 right-3 bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded-full">
-                    Priority
-                  </div>
-                )}
-
-                <div className="p-6 relative z-10">
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${service.bgColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-7 h-7 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`} />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-blue-600 font-medium mb-2 text-sm">
-                    {service.tooltip}
-                  </p>
-                  
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {service.preview}
-                  </p>
-
-                  {/* Action */}
-                  <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors text-sm">
-                    <span>Explore</span>
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-
-                {/* Hover Effect Border */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </div>
-            );
-          })}
-        </div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.09,
+              },
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
+          {SERVICES.map((service, idx) => (
+            <ServiceCard
+              key={service.title}
+              icon={service.icon}
+              title={service.title}
+              tooltip={service.tooltip}
+              cta={service.cta}
+              ctaTooltip={service.ctaTooltip}
+              onClick={() => window.location.href = service.route}
+            />
+          ))}
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };

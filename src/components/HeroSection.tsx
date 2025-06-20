@@ -1,8 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Users, BarChart3, Heart } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTypewriter } from "@/hooks/useTypewriter";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   userType: 'resident' | 'official' | 'visitor';
@@ -11,6 +12,7 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [showTypewriter, setShowTypewriter] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,11 +53,18 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
 
   const content = getHeroContent();
 
+  // Typewriter effect for subtitle
+  const typewriterText = useTypewriter(content.subtitle, {
+    speed: 28,
+    delay: 0,
+    onDone: undefined,
+  });
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-yellow-50 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%230B1523%22%20fill-opacity=%221%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%230B1523%22%20fill-opacity=%221%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
@@ -68,17 +77,29 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
             {content.badge}
           </Badge>
 
-          {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          {/* Main Title with fade-in */}
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
             <span className="bg-gradient-to-r from-blue-600 to-yellow-500 bg-clip-text text-transparent">
               {content.title}
             </span>
-          </h1>
+          </motion.h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-            {content.subtitle}
-          </p>
+          {/* Subtitle with typewriter effect */}
+          <motion.p
+            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed min-h-[3.5rem]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            aria-label={content.subtitle}
+          >
+            {typewriterText}
+            <span className="inline-block w-2 h-6 align-middle bg-gray-400 animate-pulse ml-1" style={{ verticalAlign: 'middle', borderRadius: 2 }} />
+          </motion.p>
 
           {/* CTA Button */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>

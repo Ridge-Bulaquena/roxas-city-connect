@@ -1,6 +1,7 @@
 import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
+import { useRef, useState } from "react";
 
 const SERVICES = [
   {
@@ -92,22 +93,33 @@ const SERVICES = [
 const HERO_TYPEWRITER = `City Services at Your Fingertips\nComprehensive public services designed to serve every citizen, from healthcare to education, infrastructure to cultural preservation.`;
 
 export const ServicesGrid = () => {
-  const typewriterText = useTypewriter(HERO_TYPEWRITER, { speed: 22 });
+  const [startTypewriter, setStartTypewriter] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const typewriterText = useTypewriter(HERO_TYPEWRITER, { speed: 22, delay: 0, onDone: undefined });
+
+  // Only start typewriter when in view
+  const handleViewportEnter = () => {
+    if (!startTypewriter) setStartTypewriter(true);
+  };
+
+  const displayedText = startTypewriter ? typewriterText : "";
+
   return (
     <motion.section
       className="py-20 section-light"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      onViewportEnter={handleViewportEnter}
+      ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ minHeight: '3.5rem' }}>
-            {typewriterText.split('\n')[0]}
+            {displayedText.split('\n')[0]}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto min-h-[2.5rem]">
-            {typewriterText.split('\n')[1] || ''}
-            <span className="inline-block w-2 h-6 align-middle bg-gray-400 animate-pulse ml-1" style={{ verticalAlign: 'middle', borderRadius: 2 }} />
+            {displayedText.split('\n')[1] || ''}
           </p>
         </div>
         <motion.div

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -30,6 +29,11 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Sync userType to localStorage
+  useEffect(() => {
+    localStorage.setItem('userType', userType);
+  }, [userType]);
 
   const navItems = [
     {
@@ -152,8 +156,8 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                 onChange={(e) => setUserType(e.target.value as any)}
                 className="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white"
               >
-                <option value="visitor">Visitor</option>
                 <option value="resident">Resident</option>
+                <option value="visitor">Visitor</option>
                 <option value="official">Official</option>
               </select>
             </div>
@@ -180,8 +184,8 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                   onChange={(e) => setUserType(e.target.value as any)}
                   className="text-sm border border-gray-300 rounded-md px-2 py-1"
                 >
-                  <option value="visitor">Visitor</option>
                   <option value="resident">Resident</option>
+                  <option value="visitor">Visitor</option>
                   <option value="official">Official</option>
                 </select>
               </div>

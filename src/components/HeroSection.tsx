@@ -98,7 +98,6 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
             aria-label={content.subtitle}
           >
             {typewriterText}
-            <span className="inline-block w-2 h-6 align-middle bg-gray-400 animate-pulse ml-1" style={{ verticalAlign: 'middle', borderRadius: 2 }} />
           </motion.p>
 
           {/* CTA Button */}

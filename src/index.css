@@ -397,3 +397,7 @@ html {
 
 /* Remove underline effect */
 .btn-primary .underline { display: none !important; }
+
+.btn, .btn-primary, button, [type="button"], [type="submit"] {
+  border-radius: 100px !important;
+}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
@@ -10,6 +9,8 @@ import { OpenDataSpotlight } from "@/components/OpenDataSpotlight";
 import { TourismFeed } from "@/components/TourismFeed";
 import { Footer } from "@/components/Footer";
 import { usePersonalization } from "@/hooks/usePersonalization";
+import VisitorHome from "@/components/VisitorHome";
+import ResidentHome from "@/components/ResidentHome";
 
 const Index = () => {
   const { userType, setUserType, hasVoted, language } = usePersonalization();
@@ -17,9 +18,12 @@ const Index = () => {
 
   useEffect(() => {
     setIsLoaded(true);
+    setUserType(localStorage.getItem('userType') || 'resident');
   }, []);
 
-  return (
+  return userType === 'visitor' ? (
+    <VisitorHome />
+  ) : (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation userType={userType} setUserType={setUserType} />
       

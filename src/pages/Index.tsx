@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesGrid } from "@/components/ServicesGrid";
@@ -14,12 +14,7 @@ import ResidentHome from "@/components/ResidentHome";
 
 const Index = () => {
   const { userType, setUserType, hasVoted, language } = usePersonalization();
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    setUserType(localStorage.getItem('userType') || 'resident');
-  }, []);
+  const [isLoaded, setIsLoaded] = useState(true); // Always true, or use a loading state if needed
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

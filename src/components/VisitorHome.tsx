@@ -81,11 +81,17 @@ export default function VisitorHome() {
           From cultural calendars to booking tools — we make it easy.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
-          <Button asChild className="btn-primary text-[#38E1FF] border border-[#2E3E56] hover:bg-[#22344D]">
-            <a href="/tourism-culture/showcase/community">Connect with Locals</a>
+          <Button asChild className="btn-visitor">
+            <a href="/tourism-culture/showcase/community">
+              Connect with Locals
+              <span className="shine" />
+            </a>
           </Button>
-          <Button asChild className="btn-primary text-[#38E1FF] border border-[#2E3E56] hover:bg-[#22344D]">
-            <a href="/tourism-culture/showcase/attractions">Explore the Map</a>
+          <Button asChild className="btn-visitor">
+            <a href="/tourism-culture/showcase/attractions">
+              Explore the Map
+              <span className="shine" />
+            </a>
           </Button>
         </div>
       </section>

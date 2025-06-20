@@ -410,3 +410,42 @@ html {
 .animate-marquee {
   animation: marquee 18s linear infinite;
 }
+
+.btn-visitor {
+  background: #22344D;
+  color: #fff;
+  border-radius: 100px;
+  padding: 0.75rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(34,52,77,0.08);
+  border: 1px solid #2E3E56;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-visitor:hover, .btn-visitor:focus {
+  background: #2d4266;
+  box-shadow: 0 4px 16px rgba(56,225,255,0.10);
+}
+.btn-visitor .shine {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, #fff6 0%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 100px;
+  transition: opacity 0.2s;
+}
+.btn-visitor:hover .shine,
+.btn-visitor:focus .shine {
+  opacity: 1;
+  animation: shine 0.7s linear;
+}

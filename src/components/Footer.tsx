@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 
@@ -49,6 +48,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
+              <li>
+                <a href="/visitor" className="text-gray-300 hover:text-white transition-colors text-sm font-semibold">
+                  Visitor Portal
+                </a>
+              </li>
               {[
                 'Public Services',
                 'Transparency Dashboard', 

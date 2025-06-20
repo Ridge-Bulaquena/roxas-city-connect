@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { VisitorCard } from "@/components/ui/visitor/VisitorCard";
+import { IconCard } from "@/components/ui/visitor/IconCard";
 
 interface UseTypewriterOptions {
   speed?: number; // ms per character

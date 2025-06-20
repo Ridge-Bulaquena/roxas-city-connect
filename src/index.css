@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Inter:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -45,6 +46,12 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --civic-bg: #F7F9FC;
+    --civic-card: #FFFFFF;
+    --civic-accent: #004080;
+    --civic-accent-hover: #0059b3;
+    --civic-shadow: 0 4px 20px rgba(0,0,0,0.05);
   }
 
   .dark {
@@ -93,11 +100,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--civic-bg);
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  h1, h2, h3, h4, h5, h6, button, .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 

@@ -1,106 +1,98 @@
 import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 const SERVICES = [
   {
-    icon: "🏥",
+    icon: "Stethoscope",
     title: "Health Services",
-    tooltip: "Find nearby health stations, track medicine supply, and report health concerns — instantly.",
+    description: "Find nearby health stations, track medicine supply, and report health concerns.",
     cta: "Access Health Support",
-    ctaTooltip: "Get care that responds to your needs.",
     route: "/health-services/",
   },
   {
-    icon: "🎓",
+    icon: "GraduationCap",
     title: "Education Support",
-    tooltip: "Scholarships, feeding programs, teacher training — everything for lifelong learning.",
+    description: "Scholarships, feeding programs, and lifelong learning resources for all citizens.",
     cta: "Support Learners",
-    ctaTooltip: "Fuel futures through inclusive education.",
     route: "/education-support/",
   },
   {
-    icon: "👨‍👩‍👧‍👦",
+    icon: "Handshake",
     title: "Social Welfare",
-    tooltip: "Support for PWDs, seniors, solo parents, and indigents. Leave no one behind.",
+    description: "Programs for PWDs, solo parents, seniors, and marginalized families.",
     cta: "Uplift Communities",
-    ctaTooltip: "Compassion in action.",
     route: "/social-welfare/",
   },
   {
-    icon: "🏛️",
+    icon: "Landmark",
     title: "Governance & Transparency",
-    tooltip: "See budgets, projects, procurement logs. Accountability in plain sight.",
+    description: "Access city budgets, procurement records, and performance data in real time.",
     cta: "Track Governance",
-    ctaTooltip: "Transparency is the first step to trust.",
     route: "/governance-transparency/",
   },
   {
-    icon: "🚧",
+    icon: "Construction",
     title: "Public Works & Infrastructure",
-    tooltip: "Monitor roads, drainage, housing, and public facilities. Real-time progress, real impact.",
+    description: "Monitor ongoing roadworks, housing projects, and facility upgrades.",
     cta: "View City Projects",
-    ctaTooltip: "Watch Roxas transform.",
     route: "/public-works-infrastructure/",
   },
   {
-    icon: "🌱",
+    icon: "Leaf",
     title: "Environmental Management",
-    tooltip: "Clean water, clean air, waste management. Your environment matters.",
+    description: "Preserve clean air, water, and sustainable land use in Roxas.",
     cta: "Protect Our Environment",
-    ctaTooltip: "A greener Roxas begins here.",
     route: "/environmental-management/",
   },
   {
-    icon: "🌾",
+    icon: "Wheat",
     title: "Agriculture & Fishery Support",
-    tooltip: "Empowering farmers and fisherfolk with access, tools, and training.",
+    description: "Empowering local producers with training, access, and innovation.",
     cta: "Support Local Producers",
-    ctaTooltip: "Grow with Roxas. Feed the nation.",
     route: "/agriculture-fishery-support/",
   },
   {
-    icon: "🕊️",
+    icon: "ShieldCheck",
     title: "Peace & Order",
-    tooltip: "Safe streets. Fair enforcement. Community-driven safety programs.",
+    description: "Community-focused safety with fair enforcement and local patrol programs.",
     cta: "Promote Safety",
-    ctaTooltip: "Your peace of mind is our priority.",
     route: "/peace-order/",
   },
   {
-    icon: "📊",
+    icon: "BarChart",
     title: "Open Data Portal",
-    tooltip: "Full data access for journalists, developers, and everyday citizens.",
+    description: "Explore raw civic data, budget flows, and project timelines.",
     cta: "Explore Open Data",
-    ctaTooltip: "Truth has nothing to hide.",
     route: "/open-data-portal/",
   },
   {
-    icon: "🗳️",
+    icon: "Globe",
     title: "Digital Participation",
-    tooltip: "Public consultations, community polls, and participatory budgeting — online.",
+    description: "Submit ideas, vote, and join town halls from your device.",
     cta: "Engage Digitally",
-    ctaTooltip: "Be heard. Be counted.",
     route: "/digital-participation/",
   },
   {
-    icon: "💼",
+    icon: "Briefcase",
     title: "Business Support",
-    tooltip: "From permits to mentorship — we champion Roxas' entrepreneurs.",
+    description: "Permits, incentives, and mentorship to help entrepreneurs thrive.",
     cta: "Start or Grow Your Business",
-    ctaTooltip: "Prosperity begins with partnership.",
     route: "/business-support/",
   },
   {
-    icon: "🏖️",
+    icon: "Compass",
     title: "Tourism & Culture",
-    tooltip: "Celebrate heritage, festivals, and local artistry — experience Roxas.",
+    description: "Discover festivals, food, heritage, and sights of Roxas.",
     cta: "Explore Roxas Culture",
-    ctaTooltip: "A city rich in soul and story.",
     route: "/tourism-culture/",
   },
 ];
 
+const HERO_TYPEWRITER = `City Services at Your Fingertips\nComprehensive public services designed to serve every citizen, from healthcare to education, infrastructure to cultural preservation.`;
+
 export const ServicesGrid = () => {
+  const typewriterText = useTypewriter(HERO_TYPEWRITER, { speed: 22 });
   return (
     <motion.section
       className="py-20 section-light"
@@ -110,23 +102,13 @@ export const ServicesGrid = () => {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <motion.h2
-            className="text-4xl font-bold text-gray-900 mb-4"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            City Services at Your Fingertips
-          </motion.h2>
-          <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            Comprehensive public services designed to serve every citizen, from healthcare to education, 
-            infrastructure to cultural preservation.
-          </motion.p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ minHeight: '3.5rem' }}>
+            {typewriterText.split('\n')[0]}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto min-h-[2.5rem]">
+            {typewriterText.split('\n')[1] || ''}
+            <span className="inline-block w-2 h-6 align-middle bg-gray-400 animate-pulse ml-1" style={{ verticalAlign: 'middle', borderRadius: 2 }} />
+          </p>
         </div>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
@@ -144,11 +126,10 @@ export const ServicesGrid = () => {
           {SERVICES.map((service, idx) => (
             <ServiceCard
               key={service.title}
-              icon={service.icon}
+              icon={service.icon as any}
               title={service.title}
-              tooltip={service.tooltip}
+              description={service.description}
               cta={service.cta}
-              ctaTooltip={service.ctaTooltip}
               onClick={() => window.location.href = service.route}
             />
           ))}

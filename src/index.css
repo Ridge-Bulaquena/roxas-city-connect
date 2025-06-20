@@ -401,3 +401,12 @@ html {
 .btn, .btn-primary, button, [type="button"], [type="submit"] {
   border-radius: 100px !important;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}

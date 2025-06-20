@@ -208,8 +208,18 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
 
       {/* Role-based notification banner */}
       {userType === 'resident' && (
-        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-center py-2 text-sm">
-          💡 Participatory Budget voting is open today! Have your say in city spending.
+        <div className="relative overflow-hidden bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-sm h-9 flex items-center">
+          <div
+            className="whitespace-nowrap animate-marquee px-4"
+            style={{
+              display: 'inline-block',
+              minWidth: '100%',
+              animation: 'marquee 18s linear infinite',
+            }}
+            aria-label="Participatory Budget voting is open today! Have your say in city spending."
+          >
+            💡 Participatory Budget voting is open today! Have your say in city spending.
+          </div>
         </div>
       )}
     </nav>

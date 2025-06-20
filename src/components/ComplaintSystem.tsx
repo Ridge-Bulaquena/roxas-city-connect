@@ -83,7 +83,7 @@ export const ComplaintSystem = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700 px-8 elastic-button">
+              <Button className="btn-dark-secondary px-8 elastic-button">
                 Track Complaint
               </Button>
             </CardContent>

@@ -170,6 +170,37 @@
     background-color: #38E1FF;
   }
 
+  /* Dark section button styles */
+  .section-dark .btn-dark-primary {
+    background: #1e3a8a;
+    color: #ffffff;
+    border: 1px solid rgba(56, 225, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  .section-dark .btn-dark-primary:hover {
+    background: #1e40af;
+    color: #ffffff;
+    border-color: #38E1FF;
+    box-shadow: 0 4px 12px rgba(56, 225, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .section-dark .btn-dark-secondary {
+    background: #22344D;
+    color: #9AAEC4;
+    border: 1px solid rgba(154, 174, 196, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+
+  .section-dark .btn-dark-secondary:hover {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #38E1FF;
+    box-shadow: 0 4px 12px rgba(56, 225, 255, 0.15);
+    transform: translateY(-1px);
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }

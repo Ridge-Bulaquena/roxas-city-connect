@@ -64,7 +64,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
             </CardHeader>
             <CardContent className="text-center">
               <Button 
-                className={`elastic-button ${hasVoted ? "bg-green-600 hover:bg-green-700" : "bg-accent-highlight hover:bg-accent-highlight/90 text-black"}`}
+                className={`elastic-button ${hasVoted ? "btn-dark-primary" : "bg-accent-highlight hover:bg-accent-highlight/90 text-black"}`}
                 disabled={hasVoted}
               >
                 {hasVoted ? "View Results" : "Cast Your Vote"}
@@ -90,7 +90,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700 elastic-button">
+              <Button className="btn-dark-secondary elastic-button">
                 Join Discussion
               </Button>
             </CardContent>
@@ -114,7 +114,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700 elastic-button">
+              <Button className="btn-dark-secondary elastic-button">
                 Take Survey
               </Button>
             </CardContent>

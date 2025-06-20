@@ -38,7 +38,7 @@ export function ServiceCard({
       aria-label={title}
       onClick={onClick}
     >
-      {/* Shine swipe effect */}
+      {/* Shine swipe effect for card */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute left-[-60%] top-0 h-full w-1/2 bg-gradient-to-r from-white/60 to-transparent opacity-0 group-hover:opacity-80 rounded-2xl"
@@ -55,19 +55,31 @@ export function ServiceCard({
         <p className="text-gray-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]">{description}</p>
       </div>
       <div className="w-full px-4 pb-6 flex flex-col items-center">
-        <motion.button
-          className="w-full font-inter bg-[var(--civic-accent)] text-white rounded-lg shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 py-2 px-4 text-sm font-medium"
-          style={{ boxShadow: "0 2px 8px rgba(0,64,128,0.08)" }}
-          whileHover={{ backgroundColor: "var(--civic-accent-hover)", scale: 1.06, boxShadow: "0 4px 20px rgba(0,64,128,0.12)" }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 400, damping: 18 }}
-          tabIndex={0}
-          onClick={onClick}
-          aria-label={cta}
-        >
-          {cta}
-        </motion.button>
+        <div className="relative w-full">
+          <button
+            className="w-full font-inter bg-[var(--civic-accent)] text-white rounded-lg shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 py-2 px-4 text-sm font-medium overflow-hidden relative"
+            style={{ boxShadow: "0 2px 8px rgba(0,64,128,0.08)" }}
+            tabIndex={0}
+            onClick={onClick}
+            aria-label={cta}
+          >
+            {cta}
+            {/* Shine overlay for button */}
+            <span className="absolute left-[-40%] top-0 h-full w-2/3 bg-gradient-to-r from-white/60 to-transparent opacity-0 hover:opacity-80 rounded-lg pointer-events-none transition-opacity duration-200 animate-shine" />
+          </button>
+        </div>
       </div>
     </motion.div>
   );
-} 
+}
+
+/* Add this to your global CSS (e.g., index.css or tailwind.css):
+@keyframes shine {
+  0% { left: -40%; opacity: 0; }
+  40% { opacity: 0.8; }
+  100% { left: 120%; opacity: 0; }
+}
+.animate-shine:hover {
+  animation: shine 0.7s linear;
+}
+*/ 

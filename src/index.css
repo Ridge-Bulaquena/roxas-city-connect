@@ -293,6 +293,16 @@
   }
 }
 
+@keyframes shine {
+  0% { left: -40%; opacity: 0; }
+  40% { opacity: 0.8; }
+  100% { left: 120%; opacity: 0; }
+}
+
+.animate-shine:hover {
+  animation: shine 0.7s linear;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

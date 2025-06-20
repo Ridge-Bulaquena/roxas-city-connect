@@ -210,15 +210,15 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
       {userType === 'resident' && (
         <div className="relative overflow-hidden bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-sm h-9 flex items-center">
           <div
-            className="whitespace-nowrap animate-marquee px-4"
-            style={{
-              display: 'inline-block',
-              minWidth: '100%',
-              animation: 'marquee 18s linear infinite',
-            }}
+            className="whitespace-nowrap animate-marquee px-4 flex"
             aria-label="Participatory Budget voting is open today! Have your say in city spending."
           >
-            💡 Participatory Budget voting is open today! Have your say in city spending.
+            <span className="mr-12">
+              <span role="img" aria-label="lightbulb">💡</span> Participatory Budget voting is open today! Have your say in city spending.
+            </span>
+            <span>
+              <span role="img" aria-label="lightbulb">💡</span> Participatory Budget voting is open today! Have your say in city spending.
+            </span>
           </div>
         </div>
       )}

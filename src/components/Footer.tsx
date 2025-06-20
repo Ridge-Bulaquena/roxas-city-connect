@@ -131,7 +131,7 @@ export const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-gray-700 bg-gradient-to-r from-slate-900/80 to-blue-900/80">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="text-sm text-gray-400">

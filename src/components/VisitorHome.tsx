@@ -2,51 +2,30 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { ArrowRight } from "lucide-react";
-import HeroSlider from "@/components/ui/visitor/HeroSlider";
+import { VisitorCard } from "@/components/ui/visitor/VisitorCard";
+import { IconCard } from "@/components/ui/visitor/IconCard";
 
-function VisitorCard({ title, subtitle, description, href, tooltip }: { title: string, subtitle: string, description: string, href: string, tooltip: string }) {
+// Simple HeroSlider placeholder
+function HeroSlider() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8, scale: 1.03, boxShadow: "0 8px 32px rgba(56,225,255,0.10)" }}
-      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      className="bg-[#1A263B] p-6 rounded-xl shadow-lg hover:bg-[#22344D] transition-all duration-300 text-center flex flex-col items-center"
-    >
-      <h3 className="text-xl font-semibold mb-1">{title}</h3>
-      <div className="text-[#38E1FF] font-medium mb-2">{subtitle}</div>
-      <p className="text-sm text-[#9AAEC4] mb-4">{description}</p>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button className="btn-primary mx-auto mt-2 block" asChild>
-            <a href={href}>
-              Learn More <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent side="top" className="bg-[#0B1523] text-white rounded-lg px-4 py-3 text-[14px] font-[Figtree] shadow-lg" sideOffset={8}>
-          {tooltip}
-        </TooltipContent>
-      </Tooltip>
-    </motion.div>
-  );
-}
-
-function IconCard({ icon, title, desc }: { icon: string, title: string, desc: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -4, scale: 1.04 }}
-      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center border border-gray-100"
-    >
-      <span className="text-3xl mb-2">{icon}</span>
-      <div className="font-semibold text-lg mb-1 text-midnight">{title}</div>
-      <div className="text-gray-500 text-sm">{desc}</div>
-    </motion.div>
+    <section className="bg-[#0B1523] text-white py-20 px-6 text-center">
+      <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", delay: 0.1 }}
+        className="text-4xl md:text-5xl font-bold mb-4"
+      >
+        Welcome to Roxas City
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, type: "spring" }}
+        className="text-lg text-[#9AAEC4] max-w-2xl mx-auto"
+      >
+        Explore, invest, and experience culture — all in one platform built for visitors like you.
+      </motion.p>
+    </section>
   );
 }
 

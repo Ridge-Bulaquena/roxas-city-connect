@@ -169,7 +169,7 @@ export const ServicesGrid = ({ userType }: ServicesGridProps) => {
   const sortedServices = [...services].sort((a, b) => a.priority - b.priority);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 section-light">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">

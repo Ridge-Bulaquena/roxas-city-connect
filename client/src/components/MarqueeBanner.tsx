@@ -68,37 +68,26 @@ export default function MarqueeBanner() {
         }}
         transition={{
           repeat: Infinity,
-          duration: headlines.length * 0.75, // Twice as fast
+          duration: headlines.length * 2, // Slower for mobile to see all items
           ease: "linear",
         }}
       >
-        {/* Render headlines twice for seamless scroll */}
-        <div className="flex-shrink-0">
-          {headlines.map((headline, index) => (
-            <motion.button
-              key={index}
-              className="inline-block px-16 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer"
-              onClick={() => handleClick(headline.link)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {headline.text}
-            </motion.button>
-          ))}
-        </div>
-        <div className="flex-shrink-0">
-          {headlines.map((headline, index) => (
-            <motion.button
-              key={`duplicate-${index}`}
-              className="inline-block px-16 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer"
-              onClick={() => handleClick(headline.link)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {headline.text}
-            </motion.button>
-          ))}
-        </div>
+        {/* Render headlines multiple times for seamless scroll */}
+        {[...Array(3)].map((_, setIndex) => (
+          <div key={setIndex} className="flex-shrink-0">
+            {headlines.map((headline, index) => (
+              <motion.button
+                key={`${setIndex}-${index}`}
+                className="inline-block px-12 md:px-16 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap"
+                onClick={() => handleClick(headline.link)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {headline.text}
+              </motion.button>
+            ))}
+          </div>
+        ))}
       </motion.div>
     </div>
   );

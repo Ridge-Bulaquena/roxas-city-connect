@@ -3,6 +3,7 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import { motion, Variants } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 import { createElement, ElementType } from "react";
+import { Link } from "react-router-dom";
 
 interface ServiceCardProps {
   icon: keyof typeof LucideIcons;
@@ -44,46 +45,42 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const Icon = (LucideIcons[icon] as ElementType) || LucideIcons.HelpCircle;
 
-  const handleClick = () => {
-    window.location.href = route;
-  };
-
   return (
-    <motion.div
-      className="group relative flex flex-col items-center justify-between h-full rounded-2xl bg-white border border-slate-200 shadow-sm cursor-pointer overflow-hidden p-6 text-center"
-      onClick={handleClick}
-      whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-      variants={cardContentVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
-    >
-      <motion.div variants={elementVariants} className="mb-4">
-        <span className="inline-block p-3 bg-blue-100 rounded-xl">
-          <Icon size={32} className="text-blue-600" />
-        </span>
-      </motion.div>
-      <motion.h3
-        variants={elementVariants}
-        className="text-lg font-bold text-slate-800 mb-2"
+    <Link to={route} className="block">
+      <motion.div
+        className="group relative flex flex-col items-center justify-between h-full rounded-2xl bg-white border border-slate-200 shadow-sm cursor-pointer overflow-hidden p-6 text-center"
+        whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+        variants={cardContentVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
       >
-        {title}
-      </motion.h3>
-      <motion.p
-        variants={elementVariants}
-        className="text-sm text-slate-600 mb-4 flex-grow"
-      >
-        {description}
-      </motion.p>
-      <motion.div variants={elementVariants} className="w-full">
-        <Button
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-          onClick={handleClick}
+        <motion.div variants={elementVariants} className="mb-4">
+          <span className="inline-block p-3 bg-blue-100 rounded-xl">
+            <Icon size={32} className="text-blue-600" />
+          </span>
+        </motion.div>
+        <motion.h3
+          variants={elementVariants}
+          className="text-lg font-bold text-slate-800 mb-2"
         >
-          {cta}
-        </Button>
+          {title}
+        </motion.h3>
+        <motion.p
+          variants={elementVariants}
+          className="text-sm text-slate-600 mb-4 flex-grow"
+        >
+          {description}
+        </motion.p>
+        <motion.div variants={elementVariants} className="w-full">
+          <Button
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+          >
+            {cta}
+          </Button>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 }
 

@@ -109,6 +109,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group ripple pulse-glow"
+                  onClick={() => navigate('/get-started')}
                 >
                   {content.cta}
                   <motion.div
@@ -128,7 +129,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                       size="lg" 
                       variant="outline"
                       className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ripple"
-                      onClick={() => navigate('/city-services')}
+                      onClick={() => navigate('/services')}
                     >
                       City Services
                     </Button>
@@ -139,7 +140,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                       size="lg" 
                       variant="outline"
                       className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ripple"
-                      onClick={() => navigate('/share-feedback')}
+                      onClick={() => navigate('/feedback')}
                     >
                       Share Feedback
                     </Button>

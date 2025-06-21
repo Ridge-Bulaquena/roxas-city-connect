@@ -83,7 +83,7 @@ export const Footer = () => {
             </div>
             <p className="text-xs text-slate-500 mt-3">
               We care about your data. Read our{' '}
-              <a href="#" className="underline hover:text-slate-800">privacy policy</a>.
+              <a href="/privacy" className="underline hover:text-slate-800">privacy policy</a>.
             </p>
           </div>
         </div>

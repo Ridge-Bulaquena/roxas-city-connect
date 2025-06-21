@@ -70,20 +70,6 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
 
   const navItems = [
     {
-      id: 'digitalservices',
-      title: 'Digital Services',
-      tooltip: 'Online city services 24/7.',
-      href: '/services',
-      items: undefined
-    },
-    {
-      id: 'civicengagement',
-      title: 'Civic Engagement',
-      tooltip: 'Make your voice heard.',
-      href: '/civic-engagement',
-      items: undefined
-    },
-    {
       id: 'services',
       title: 'Public Services',
       tooltip: 'Access vital local programs.',
@@ -243,19 +229,19 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[#0B132B]/95 backdrop-blur-md shadow-lg border-b border-[#28D7DB]/20' 
-        : 'bg-[#0B132B]/90 backdrop-blur-sm'
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
+        : 'bg-white/90 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#28D7DB] to-[#00E5FF] rounded-lg flex items-center justify-center">
-              <Home className="w-6 h-6 text-[#0B132B]" />
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <Home className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-xl text-[#E3F6FF] font-inter">Roxas City</h1>
-              <p className="text-xs text-[#93A3B5] font-figtree">Citizen Platform</p>
+              <h1 className="font-bold text-xl text-gray-900 font-inter">Roxas City</h1>
+              <p className="text-xs text-gray-600 font-figtree">Citizen Platform</p>
             </div>
           </div>
 
@@ -265,50 +251,41 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
               <div
                 key={item.id}
                 className="relative"
-                onMouseEnter={() => !item.href && handleMouseEnter(item.id)}
+                onMouseEnter={() => handleMouseEnter(item.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                {item.href ? (
-                  <a 
-                    href={item.href}
-                    className="flex items-center space-x-1 px-4 py-2 text-[#93A3B5] hover:text-[#28D7DB] transition-colors group font-inter font-medium"
-                  >
-                    <span>{item.title}</span>
-                  </a>
-                ) : (
-                  <button className="flex items-center space-x-1 px-4 py-2 text-[#93A3B5] hover:text-[#28D7DB] transition-colors group font-inter font-medium">
-                    <span>{item.title}</span>
-                    <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
-                  </button>
-                )}
+                <button className="flex items-center space-x-1 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors group font-inter font-medium">
+                  <span>{item.title}</span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                </button>
 
                 {/* Mega Menu Dropdown */}
-                {activeDropdown === item.id && item.items && (
+                {activeDropdown === item.id && (
                   <div 
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-[#1C2E4A] rounded-xl shadow-2xl border border-[#28D7DB]/20 overflow-hidden animate-fade-in z-50"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden animate-fade-in z-50"
                     onMouseEnter={() => handleMouseEnter(item.id)}
                     onMouseLeave={handleMouseLeave}
                   >
                     <div className="p-6">
-                      <div className="text-sm text-[#28D7DB] mb-4 font-inter font-medium">{item.tooltip}</div>
+                      <div className="text-sm text-blue-600 mb-4 font-inter font-medium">{item.tooltip}</div>
                       <div className="grid grid-cols-2 gap-4">
-                        {item.items?.map((subItem, index) => {
+                        {item.items.map((subItem, index) => {
                           const IconComponent = subItem.icon;
                           return (
                             <div
                               key={index}
-                              className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-[#28D7DB]/10 cursor-pointer transition-all duration-200 border border-transparent hover:border-[#28D7DB]/30"
+                              className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-blue-50 cursor-pointer transition-all duration-200 border border-transparent hover:border-blue-100"
                             >
                               <div className="flex-shrink-0">
-                                <div className="w-12 h-12 bg-gradient-to-br from-[#28D7DB] to-[#00E5FF] rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                                  <IconComponent className="w-6 h-6 text-[#0B132B]" />
+                                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+                                  <IconComponent className="w-6 h-6 text-white" />
                                 </div>
                               </div>
                               <div className="flex-1 min-w-0">
-                                <div className="font-inter font-semibold text-[#E3F6FF] group-hover:text-[#28D7DB] transition-colors">
+                                <div className="font-inter font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                                   {subItem.title}
                                 </div>
-                                <div className="text-sm text-[#93A3B5] mt-1 font-figtree leading-relaxed">
+                                <div className="text-sm text-gray-600 mt-1 font-figtree leading-relaxed">
                                   {subItem.desc}
                                 </div>
                               </div>

@@ -11,7 +11,7 @@ const Index = () => {
   const [isLoaded, setIsLoaded] = useState(true); // Always true, or use a loading state if needed
 
   return (
-    <div className="min-h-screen bg-[#0E1A2A] text-[#E3F6FF] flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation userType={userType} setUserType={setUserType} />
       <main className={`flex-1 transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {userType === 'visitor' ? (

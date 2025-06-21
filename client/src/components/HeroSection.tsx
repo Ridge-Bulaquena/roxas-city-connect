@@ -61,7 +61,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
   });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0E1A2A] via-[#0B132B] to-[#1C2E4A] overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-yellow-50 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%230B1523%22%20fill-opacity=%221%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
@@ -72,26 +72,26 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
           {/* Badge */}
           <Badge 
             variant="secondary" 
-            className="mb-6 px-4 py-2 text-sm font-medium bg-[#28D7DB]/20 text-[#28D7DB] border-[#28D7DB]/30 animate-fade-in"
+            className="mb-6 px-4 py-2 text-sm font-medium bg-yellow-100 text-yellow-800 border-yellow-200 animate-fade-in"
           >
             {content.badge}
           </Badge>
 
           {/* Main Title with fade-in */}
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#E3F6FF] mb-6 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <span className="bg-gradient-to-r from-[#28D7DB] via-[#00E5FF] to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-yellow-500 bg-clip-text text-transparent">
               {content.title}
             </span>
           </motion.h1>
 
           {/* Subtitle with typewriter effect */}
           <motion.p
-            className="text-xl md:text-2xl text-[#93A3B5] mb-8 max-w-4xl mx-auto leading-relaxed min-h-[3.5rem]"
+            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed min-h-[3.5rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -105,7 +105,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#28D7DB] via-[#00E5FF] to-white text-[#0B132B] hover:from-[#00E5FF] hover:to-[#28D7DB] px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group hover:scale-105 active:scale-95"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
               >
                 {content.cta}
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -116,8 +116,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-2 border-[#28D7DB] text-[#28D7DB] hover:bg-gradient-to-r hover:from-[#28D7DB] hover:via-[#00E5FF] hover:to-white hover:text-[#0B132B] px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
-                    onClick={() => window.location.href = '/services'}
+                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     City Services
                   </Button>
@@ -125,8 +124,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-2 border-[#28D7DB] text-[#28D7DB] hover:bg-gradient-to-r hover:from-[#28D7DB] hover:via-[#00E5FF] hover:to-white hover:text-[#0B132B] px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
-                    onClick={() => window.location.href = '/civic-engagement'}
+                    className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     Share Feedback
                   </Button>
@@ -137,20 +135,20 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
 
           {/* Stats */}
           <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="flex flex-col items-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl border border-[#28D7DB]/20">
-              <Users className="w-8 h-8 text-[#28D7DB] mb-3" />
-              <div className="text-2xl font-bold text-[#E3F6FF]">156,435</div>
-              <div className="text-[#93A3B5]">Active Citizens</div>
+            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
+              <Users className="w-8 h-8 text-blue-600 mb-3" />
+              <div className="text-2xl font-bold text-gray-900">156,435</div>
+              <div className="text-gray-600">Active Citizens</div>
             </div>
-            <div className="flex flex-col items-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl border border-[#28D7DB]/20">
-              <BarChart3 className="w-8 h-8 text-[#28D7DB] mb-3" />
-              <div className="text-2xl font-bold text-[#E3F6FF]">₱2.1B</div>
-              <div className="text-[#93A3B5]">City Budget</div>
+            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
+              <BarChart3 className="w-8 h-8 text-yellow-500 mb-3" />
+              <div className="text-2xl font-bold text-gray-900">₱2.1B</div>
+              <div className="text-gray-600">City Budget</div>
             </div>
-            <div className="flex flex-col items-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl border border-[#28D7DB]/20">
-              <Heart className="w-8 h-8 text-[#28D7DB] mb-3" />
-              <div className="text-2xl font-bold text-[#E3F6FF]">98.2%</div>
-              <div className="text-[#93A3B5]">Satisfaction Rate</div>
+            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
+              <Heart className="w-8 h-8 text-red-500 mb-3" />
+              <div className="text-2xl font-bold text-gray-900">98.2%</div>
+              <div className="text-gray-600">Satisfaction Rate</div>
             </div>
           </div>
         </div>

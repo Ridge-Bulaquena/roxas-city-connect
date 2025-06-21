@@ -1,3 +1,4 @@
+import { useRef, useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const headlines = [
@@ -16,18 +17,29 @@ const headlines = [
 ];
 
 export default function MarqueeBanner() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    if (marqueeRef.current) {
+      setWidth(marqueeRef.current.scrollWidth / 2); // Only one duplicate
+    }
+  }, []);
+
   return (
     <div className="overflow-hidden bg-yellow-50 border-b border-yellow-300 py-2">
       <motion.div
+        ref={marqueeRef}
         className="flex whitespace-nowrap"
-        animate={{ x: ["0%", "-100%"] }}
+        animate={width ? { x: [0, -width] } : {}}
         transition={{
           repeat: Infinity,
-          duration: 3900, // Ultra slow, all 12 headlines visible before restart
+          duration: width ? width / 40 : 60, // 40px/sec, adjust as needed
           ease: "linear",
         }}
+        style={{ willChange: "transform" }}
       >
-        {Array(25).fill(headlines).flat().map((headline, index) => (
+        {[...headlines, ...headlines].map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

@@ -23,7 +23,7 @@ export default function MarqueeBanner() {
         animate={{ x: ["0%", "-100%"] }}
         transition={{
           repeat: Infinity,
-          duration: 180, // Even slower, all 12 headlines visible before restart
+          duration: 600, // Ultra slow, all 12 headlines visible before restart
           ease: "linear",
         }}
       >

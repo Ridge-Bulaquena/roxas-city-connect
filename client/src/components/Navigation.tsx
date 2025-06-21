@@ -76,6 +76,12 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
       href: '/services'
     },
     {
+      id: 'civicengagement',
+      title: 'Civic Engagement',
+      tooltip: 'Make your voice heard.',
+      href: '/civic-engagement'
+    },
+    {
       id: 'services',
       title: 'Public Services',
       tooltip: 'Access vital local programs.',

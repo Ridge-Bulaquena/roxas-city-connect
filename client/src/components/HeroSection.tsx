@@ -4,6 +4,7 @@ import { ArrowRight, Users, BarChart3, Heart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 interface HeroSectionProps {
   userType: 'resident' | 'official' | 'visitor';
@@ -13,6 +14,7 @@ interface HeroSectionProps {
 export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTypewriter, setShowTypewriter] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -117,6 +119,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                     size="lg" 
                     variant="outline"
                     className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => navigate('/city-services')}
                   >
                     City Services
                   </Button>
@@ -125,6 +128,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                     size="lg" 
                     variant="outline"
                     className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => navigate('/share-feedback')}
                   >
                     Share Feedback
                   </Button>

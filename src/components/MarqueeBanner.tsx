@@ -39,7 +39,7 @@ export default function MarqueeBanner() {
         }}
         style={{ willChange: "transform" }}
       >
-        {[...headlines, ...headlines].map((headline, index) => (
+        {Array(30).fill(headlines).flat().map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

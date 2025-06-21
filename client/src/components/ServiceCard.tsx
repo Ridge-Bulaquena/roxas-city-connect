@@ -26,7 +26,7 @@ export function ServiceCard({
   const Icon = IconComp as ElementType;
   return (
     <motion.div
-      className="group relative flex flex-col items-center justify-between h-full rounded-2xl bg-[var(--civic-card)] border border-gray-100 shadow transition-all duration-300 cursor-pointer overflow-hidden"
+      className="group relative flex flex-col items-center justify-between h-full rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
       whileHover={{ y: -4, scale: 1.02, boxShadow: "var(--civic-shadow)" }}
       whileTap={{ scale: 0.98 }}
       initial={{ opacity: 0, y: 20 }}
@@ -48,11 +48,11 @@ export function ServiceCard({
         />
       </div>
       <div className="flex flex-col items-center justify-center flex-1 py-8 px-4 w-full">
-        <span className="mb-4 rounded-xl bg-[var(--civic-bg)] p-3 flex items-center justify-center">
-          <Icon size={36} strokeWidth={1.5} className="text-[var(--civic-accent)]" aria-hidden="true" />
+        <span className="mb-4 rounded-xl bg-blue-50 p-3 flex items-center justify-center">
+          <Icon size={36} strokeWidth={1.5} className="text-blue-700" aria-hidden="true" />
         </span>
-        <h3 className="text-lg font-inter font-semibold text-gray-900 mb-2 text-center">{title}</h3>
-        <p className="text-gray-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]">{description}</p>
+        <h3 className="text-lg font-inter font-semibold text-slate-800 mb-2 text-center">{title}</h3>
+        <p className="text-slate-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]">{description}</p>
       </div>
       <div className="w-full px-4 pb-6 flex flex-col items-center">
         <div className="relative w-full flex justify-center items-center">

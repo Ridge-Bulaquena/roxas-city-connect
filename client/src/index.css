@@ -47,11 +47,22 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --civic-bg: #F7F9FC;
+    --civic-bg: #F8FAFC;
     --civic-card: #FFFFFF;
-    --civic-accent: #004080;
-    --civic-accent-hover: #0059b3;
-    --civic-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    --civic-accent: #1E3A8A;
+    --civic-accent-hover: #1E40AF;
+    --civic-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
+    
+    /* Muted Blue Palette */
+    --midnight-blue: #0F172A;
+    --navy-blue: #1E293B;
+    --steel-blue: #334155;
+    --slate-blue: #475569;
+    --baby-blue: #E0F2FE;
+    --electric-blue: #0EA5E9;
+    --light-yellow: #FEF3C7;
+    --butter: #F59E0B;
+    --chrome: #E5E7EB;
   }
 
   .dark {
@@ -116,31 +127,31 @@
   }
 
   .section-dark {
-    background: #0B1523;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     position: relative;
   }
 
   .section-dark h2 {
-    color: #FFFFFF;
+    color: #F8FAFC;
   }
 
   .section-dark p {
-    color: #9AAEC4;
+    color: #94A3B8;
   }
 
   .section-dark .card-dark {
-    background: #121C2E;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1E293B;
+    border: 1px solid rgba(148, 163, 184, 0.1);
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
   }
 
   .section-dark .card-dark:hover {
-    background: #22344D;
+    background: #334155;
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.4);
   }
 
   .section-dark .card-dark::after {

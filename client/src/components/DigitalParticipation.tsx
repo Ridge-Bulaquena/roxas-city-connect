@@ -54,8 +54,8 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
             style={{ animationDelay: '0ms' }}
           >
             <CardHeader className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-highlight/20 mb-4 mx-auto">
-                <Vote className="w-8 h-8 accent-highlight" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-100 mb-4 mx-auto">
+                <Vote className="w-8 h-8 text-yellow-600" />
               </div>
               <CardTitle className="text-content">Budget Voting</CardTitle>
               <CardDescription className="text-muted">
@@ -64,7 +64,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
             </CardHeader>
             <CardContent className="text-center">
               <Button 
-                className={`elastic-button ${hasVoted ? "btn-dark-primary" : "bg-accent-highlight hover:bg-accent-highlight/90 text-black"}`}
+                className={`elastic-button ${hasVoted ? "bg-slate-600 hover:bg-slate-700 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-slate-900"}`}
                 disabled={hasVoted}
               >
                 {hasVoted ? "View Results" : "Cast Your Vote"}
@@ -81,8 +81,8 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
             style={{ animationDelay: '50ms' }}
           >
             <CardHeader className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-500/20 mb-4 mx-auto">
-                <MessageSquare className="w-8 h-8 text-purple-400" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4 mx-auto">
+                <MessageSquare className="w-8 h-8 text-blue-600" />
               </div>
               <CardTitle className="text-content">Town Halls</CardTitle>
               <CardDescription className="text-muted">
@@ -90,7 +90,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button className="btn-dark-secondary elastic-button">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white elastic-button">
                 Join Discussion
               </Button>
             </CardContent>
@@ -105,8 +105,8 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
             style={{ animationDelay: '100ms' }}
           >
             <CardHeader className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 mb-4 mx-auto">
-                <BarChart3 className="w-8 h-8 text-green-400" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 mb-4 mx-auto">
+                <BarChart3 className="w-8 h-8 text-slate-600" />
               </div>
               <CardTitle className="text-content">Community Polls</CardTitle>
               <CardDescription className="text-muted">
@@ -114,7 +114,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button className="btn-dark-secondary elastic-button">
+              <Button className="bg-slate-600 hover:bg-slate-700 text-white elastic-button">
                 Take Survey
               </Button>
             </CardContent>

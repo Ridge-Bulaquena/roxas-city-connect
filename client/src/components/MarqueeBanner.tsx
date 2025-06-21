@@ -60,7 +60,7 @@ export default function MarqueeBanner() {
   };
 
   return (
-    <div className="overflow-hidden bg-yellow-50 border-b border-yellow-300 py-2 marquee-container">
+    <div className="overflow-hidden bg-gradient-to-b from-amber-100 to-yellow-50 border-b border-yellow-300 py-2 marquee-container">
       <motion.div
         className="flex whitespace-nowrap"
         animate={{
@@ -68,7 +68,7 @@ export default function MarqueeBanner() {
         }}
         transition={{
           repeat: Infinity,
-          duration: headlines.length * 1.5, // Much faster speed
+          duration: headlines.length * 0.75, // Twice as fast
           ease: "linear",
         }}
       >

@@ -580,7 +580,7 @@ html {
 /* Mobile-specific faster animation */
 @media (max-width: 768px) {
   .marquee-container {
-    animation-duration: 12s !important;
+    animation-duration: 6s !important;
   }
 }
 

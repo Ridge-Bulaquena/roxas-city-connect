@@ -1,7 +1,5 @@
 import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";
-import { useTypewriter } from "@/hooks/useTypewriter";
-import { useRef, useState, useEffect } from "react";
 
 const SERVICES = [
   {
@@ -90,105 +88,61 @@ const SERVICES = [
   },
 ];
 
-const HERO_TYPEWRITER = `City Services at Your Fingertips\nComprehensive public services designed to serve every citizen, from healthcare to education, infrastructure to cultural preservation.`;
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 
-// Utility hook to get current grid columns based on breakpoints
-function useResponsiveColumns() {
-  const [cols, setCols] = useState(1);
-  useEffect(() => {
-    function updateCols() {
-      if (window.innerWidth >= 1280) setCols(4);
-      else if (window.innerWidth >= 1024) setCols(3);
-      else if (window.innerWidth >= 768) setCols(2);
-      else setCols(1);
-    }
-    updateCols();
-    window.addEventListener("resize", updateCols);
-    return () => window.removeEventListener("resize", updateCols);
-  }, []);
-  return cols;
-}
+const cardVariants = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+};
 
 export const ServicesGrid = () => {
-  const [startTypewriter, setStartTypewriter] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const typewriterText = useTypewriter(HERO_TYPEWRITER, { speed: 22, delay: 0, onDone: undefined });
-  const cols = useResponsiveColumns();
-  const DELAY_UNIT = 0.22; // seconds, for a regal, visible sequence
-
-  // Only start typewriter when in view
-  const handleViewportEnter = () => {
-    if (!startTypewriter) setStartTypewriter(true);
-  };
-
-  const displayedText = startTypewriter ? typewriterText : "";
-
   return (
-    <motion.section
-      className="py-24 md:py-20 bg-slate-50"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      onViewportEnter={handleViewportEnter}
-      ref={sectionRef}
-    >
-      <div className="max-w-7xl mx-auto px-8 md:px-4">
-        <div className="text-center mb-20 md:mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4" style={{ minHeight: '3.5rem' }}>
-            {displayedText.split('\n')[0]}
+    <section className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-slate-900 mb-3">
+            City Services at Your Fingertips
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto min-h-[2.5rem]">
-            {displayedText.split('\n')[1] || ''}
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Comprehensive public services designed to serve every citizen.
           </p>
         </div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-6"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0,
-                delayChildren: 0,
-              },
-            },
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          variants={gridContainerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
         >
-          {SERVICES.map((service, idx) => {
-            const row = Math.floor(idx / cols);
-            const col = idx % cols;
-            const delay = (row * cols + col) * DELAY_UNIT;
-            return (
-              <motion.div
-                key={service.title}
-                variants={{
-                  hidden: { opacity: 0, y: -80, scale: 0.92 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 70,
-                      damping: 18,
-                      delay,
-                    },
-                  },
-                }}
-              >
-                <ServiceCard
-                  icon={service.icon as any}
-                  title={service.title}
-                  description={service.description}
-                  cta={service.cta}
-                  onClick={() => window.location.href = service.route}
-                />
-              </motion.div>
-            );
-          })}
+          {SERVICES.map((service) => (
+            <motion.div key={service.title} variants={cardVariants}>
+              <ServiceCard
+                icon={service.icon as any}
+                title={service.title}
+                description={service.description}
+                cta={service.cta}
+                route={service.route}
+              />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };

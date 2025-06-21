@@ -1,4 +1,3 @@
-
 import { Camera, MapPin, Calendar, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -35,7 +34,7 @@ export const TourismFeed = ({ userType }: TourismFeedProps) => {
   ];
 
   return (
-    <section className="py-20 section-dark">
+    <section className="py-20 bg-[#16213a]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">

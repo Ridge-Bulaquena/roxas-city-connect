@@ -79,7 +79,7 @@ export default function MarqueeBanner() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Initialize and shuffle headlines every 2 seconds
+  // Initialize and shuffle headlines every 10 seconds
   useEffect(() => {
     const getRandomHeadlines = () => {
       const shuffled = shuffleArray(headlines);
@@ -89,10 +89,10 @@ export default function MarqueeBanner() {
     // Set initial headlines
     setCurrentHeadlines(getRandomHeadlines());
 
-    // Shuffle every 2 seconds
+    // Shuffle every 10 seconds
     const interval = setInterval(() => {
       setCurrentHeadlines(getRandomHeadlines());
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);

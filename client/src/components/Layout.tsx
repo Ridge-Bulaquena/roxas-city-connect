@@ -1,7 +1,7 @@
-
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { usePersonalization } from "@/hooks/usePersonalization";
+import WakandaFooter from "./WakandaFooter";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { userType, setUserType } = usePersonalization();
@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Navigation userType={userType} setUserType={setUserType} />
       <main className="flex-1">{children}</main>
       <Footer />
+      <WakandaFooter />
     </div>
   );
 } 

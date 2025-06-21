@@ -34,44 +34,19 @@ export const TourismFeed = ({ userType }: TourismFeedProps) => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#101a33] via-[#16213a] to-[#1a237e] text-white">
+    <section className="py-24 bg-gradient-to-b from-[#181f2e] via-[#20283d] to-[#232b3e] text-white relative">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            Discover Roxas Culture
-          </h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Experience our rich heritage, vibrant festivals, and warm hospitality. 
-            From traditional celebrations to modern attractions, there's always something happening in Roxas.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {events.map((event, index) => (
-            <Card key={index} className="card-dark hover-lift bg-white/5 border border-white/10 text-white">
-              <CardHeader>
-                <div className="text-4xl mb-4 text-center">{event.image}</div>
-                <CardTitle className="text-white font-bold">{event.title}</CardTitle>
-                <CardDescription className="text-gray-200">
-                  {event.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center text-gray-200 text-sm">
-                  <Calendar className="w-4 h-4 mr-2 text-blue-400" />
-                  {event.date}
-                </div>
-                <div className="flex items-center text-gray-200 text-sm">
-                  <MapPin className="w-4 h-4 mr-2 text-green-400" />
-                  {event.location}
-                </div>
-                <div className="flex items-center text-gray-200 text-sm">
-                  <Users className="w-4 h-4 mr-2 text-purple-400" />
-                  {event.attendees} expected
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <h2 className="text-4xl md:text-5xl font-bold tracking-widest uppercase text-gray-300 mb-12 text-center opacity-70">
+          Discover Roxas Culture
+        </h2>
+        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-16 text-center font-light tracking-wide">
+          Experience our rich heritage, vibrant festivals, and warm hospitality. From traditional celebrations to modern attractions, there's always something happening in Roxas.
+        </p>
+        <div className="flex justify-center">
+          <div className="bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-16 max-w-md mx-auto flex flex-col items-center">
+            <span className="text-5xl mb-6">🎭</span>
+            <h3 className="text-xl font-semibold text-gray-100 mb-2 tracking-widest uppercase text-center">Discover Roxas Culture</h3>
+          </div>
         </div>
 
         {userType === 'visitor' && (

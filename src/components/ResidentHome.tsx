@@ -18,10 +18,10 @@ export default function ResidentHome({ userType, hasVoted }: ResidentHomeProps) 
       <HeroSection userType={userType} hasVoted={hasVoted} />
       <ServicesGrid />
       <ComplaintSystem />
-      <LiveDashboards />
+      <LiveDashboards userType={userType} />
       <DigitalParticipation hasVoted={hasVoted} />
       <OpenDataSpotlight />
-      <TourismFeed />
+      <TourismFeed userType={userType} />
     </>
   );
 }

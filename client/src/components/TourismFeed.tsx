@@ -1,48 +1,28 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Palette, Volume2, Landmark } from "lucide-react";
 
 const discoverCards = [
   {
-    icon: "🖼️",
+    icon: <Palette className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
     title: "Roxas City Visual Arts Gallery",
     cta: "Explore Local Artistry",
     desc: "Step into a digital gallery of Capiznon visual art — from paintings and murals to modern installations.",
-    link: "/discover/art-gallery",
-    features: [
-      "Virtual tour with zoom and pan",
-      "Filter by artist, style, era",
-      "Artist spotlight carousel",
-      "Interactive mural map",
-      "Submit Your Artwork portal"
-    ]
+    link: "/discover/art-gallery"
   },
   {
-    icon: "🎶",
+    icon: <Volume2 className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
     title: "Roxas City Performing Arts & Music",
     cta: "Hear the Rhythm of Roxas",
     desc: "Celebrate the sounds and movements of Capiznon culture — from traditional folk dances to contemporary performances.",
-    link: "/discover/performing-arts",
-    features: [
-      "Embedded video/audio of performances",
-      "Timeline of local performance history",
-      "Event calendar for upcoming shows",
-      "Live-stream integration",
-      "Upload clips or nominate performers"
-    ]
+    link: "/discover/performing-arts"
   },
   {
-    icon: "🧑‍🌾",
+    icon: <Landmark className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
     title: "Capiznon Culture & Traditions",
     cta: "Dive Into Capiznon Heritage",
     desc: "Discover the deep-rooted traditions, clothing, languages, festivals, and folklore of Roxas City and Capiz.",
-    link: "/discover/capiznon-culture",
-    features: [
-      "Scroll-based animation of folk stories",
-      "Interactive infographic of attire/tools",
-      'Quiz: "How Capiznon Are You?"',
-      "Voice-over narrations of local tales",
-      "Community oral histories"
-    ]
+    link: "/discover/capiznon-culture"
   }
 ];
 
@@ -88,7 +68,7 @@ export const TourismFeed = () => {
             }}
           >
             <motion.span
-              className="text-5xl mb-6 transition-transform group-hover:scale-110"
+              className="mb-6 transition-transform group-hover:scale-110"
               whileHover={{ y: -6, scale: 1.18 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -102,11 +82,6 @@ export const TourismFeed = () => {
                 <span className="shine absolute left-0 top-0 w-full h-full pointer-events-none" />
               </span>
             </Link>
-            <ul className="text-xs text-gray-400 mt-2 space-y-1 list-disc list-inside text-left w-full max-w-xs mx-auto opacity-80">
-              {card.features.map((f, idx) => (
-                <li key={idx}>{f}</li>
-              ))}
-            </ul>
           </motion.div>
         ))}
       </div>

@@ -27,7 +27,7 @@ export default function MarqueeBanner() {
           ease: "linear",
         }}
       >
-        {Array(4).fill(headlines).flat().map((headline, index) => (
+        {Array(8).fill(headlines).flat().map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

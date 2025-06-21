@@ -3,9 +3,26 @@ import { Link } from "react-router-dom";
 import { Palette, Volume2, Landmark } from "lucide-react";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 
+const TourismIcon = ({ Icon }: { Icon: any }) => (
+  <span className="relative inline-block w-12 h-12">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="absolute inset-0 w-full h-full">
+      <defs>
+        <linearGradient id="tourism-blue-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#38bdf8" />
+          <stop offset="1" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      <g className="tourism-icon-glow">
+        <Icon className="tourism-icon-mono-blue" size={48} />
+      </g>
+    </svg>
+    <span className="tourism-icon-shine" />
+  </span>
+);
+
 const discoverCards = [
   {
-    icon: <Palette className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
+    icon: <TourismIcon Icon={Palette} />,
     title: "Roxas City Visual Arts Gallery",
     cta: "Explore Local Artistry",
     desc: "Step into a digital gallery of Capiznon visual art — from paintings and murals to modern installations.",
@@ -13,7 +30,7 @@ const discoverCards = [
     tooltip: "Browse a virtual gallery of local paintings, murals, and installations. Filter by artist, style, or era, and discover the creative spirit of Roxas City."
   },
   {
-    icon: <Volume2 className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
+    icon: <TourismIcon Icon={Volume2} />,
     title: "Roxas City Performing Arts & Music",
     cta: "Hear the Rhythm of Roxas",
     desc: "Celebrate the sounds and movements of Capiznon culture — from traditional folk dances to contemporary performances.",
@@ -21,7 +38,7 @@ const discoverCards = [
     tooltip: "Watch and listen to local performances, music, and dance. See upcoming events, enjoy video and audio showcases, and join the celebration."
   },
   {
-    icon: <Landmark className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
+    icon: <TourismIcon Icon={Landmark} />,
     title: "Capiznon Culture & Traditions",
     cta: "Dive Into Capiznon Heritage",
     desc: "Discover the deep-rooted traditions, clothing, languages, festivals, and folklore of Roxas City and Capiz.",

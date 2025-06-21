@@ -33,13 +33,13 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
   }, []);
 
   return (
-    <section className="py-24 md:py-20 section-dark">
+    <section className="py-24 md:py-20 bg-gradient-to-b from-[#181f2e] via-[#20283d] to-[#232b3e] text-white relative">
       <div className="max-w-7xl mx-auto px-8 md:px-4">
         <div className="text-center mb-20 md:mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-content">
+          <h2 className="text-4xl font-bold mb-4 text-gray-100 tracking-widest uppercase opacity-80">
             Shape Your City's Future
           </h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light">
             Participate in democratic processes, join town halls, and help decide how public funds are allocated.
           </p>
         </div>
@@ -48,9 +48,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
           {/* Participatory Budgeting */}
           <Card 
             data-index="0"
-            className={`participation-card card-dark hover-lift transition-all duration-500 ${
-              visibleCards.includes(0) ? 'animate-cascade' : 'opacity-0'
-            }`}
+            className={`participation-card bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300 ${visibleCards.includes(0) ? 'animate-cascade' : 'opacity-0'}`}
             style={{ animationDelay: '0ms' }}
           >
             <CardHeader className="text-center">
@@ -77,9 +75,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
           {/* Digital Town Hall */}
           <Card 
             data-index="1"
-            className={`participation-card card-dark hover-lift transition-all duration-500 ${
-              visibleCards.includes(1) ? 'animate-cascade' : 'opacity-0'
-            }`}
+            className={`participation-card bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300 ${visibleCards.includes(1) ? 'animate-cascade' : 'opacity-0'}`}
             style={{ animationDelay: '50ms' }}
           >
             <CardHeader className="text-center">
@@ -103,9 +99,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
           {/* Community Polls */}
           <Card 
             data-index="2"
-            className={`participation-card card-dark hover-lift transition-all duration-500 ${
-              visibleCards.includes(2) ? 'animate-cascade' : 'opacity-0'
-            }`}
+            className={`participation-card bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300 ${visibleCards.includes(2) ? 'animate-cascade' : 'opacity-0'}`}
             style={{ animationDelay: '100ms' }}
           >
             <CardHeader className="text-center">

@@ -1,4 +1,3 @@
-
 import { FileText, Search, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,13 +28,13 @@ export const ComplaintSystem = () => {
   }, []);
 
   return (
-    <section className="py-20 section-dark">
+    <section className="py-20 bg-gradient-to-b from-[#181f2e] via-[#20283d] to-[#232b3e] text-white relative">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-content">
+          <h2 className="text-4xl font-bold mb-4 text-gray-100 tracking-widest uppercase opacity-80">
             Voice Your Concerns
           </h2>
-          <p className="text-xl text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light">
             Report issues, track progress, and see real solutions. Your complaints drive positive change in our community.
           </p>
         </div>
@@ -44,9 +43,7 @@ export const ComplaintSystem = () => {
           {/* File Complaint Card */}
           <Card 
             data-index="0"
-            className={`complaint-card card-dark hover-lift transition-all duration-500 ${
-              visibleCards.includes(0) ? 'animate-cascade' : 'opacity-0'
-            }`}
+            className={`complaint-card bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300 ${visibleCards.includes(0) ? 'animate-cascade' : 'opacity-0'}`}
             style={{ animationDelay: '0ms' }}
           >
             <CardHeader className="text-center">
@@ -68,9 +65,7 @@ export const ComplaintSystem = () => {
           {/* Track Complaint Card */}
           <Card 
             data-index="1"
-            className={`complaint-card card-dark hover-lift transition-all duration-500 ${
-              visibleCards.includes(1) ? 'animate-cascade' : 'opacity-0'
-            }`}
+            className={`complaint-card bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300 ${visibleCards.includes(1) ? 'animate-cascade' : 'opacity-0'}`}
             style={{ animationDelay: '50ms' }}
           >
             <CardHeader className="text-center">

@@ -135,7 +135,7 @@
   }
 
   .section-dark {
-    background: linear-gradient(135deg, #0F172A 0%, #164E63 50%, #1E293B 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E293B 100%);
     position: relative;
     padding: 5rem 0; /* More vertical padding for sections */
   }
@@ -147,16 +147,16 @@
   }
 
   .section-dark h2 {
-    color: #F0FDFA;
+    color: #F1F5F9;
   }
 
   .section-dark p {
-    color: #A7F3D0;
+    color: #CBD5E1;
   }
 
   .section-dark .card-dark {
-    background: linear-gradient(135deg, #1E293B 0%, #155E75 100%);
-    border: 1px solid rgba(167, 243, 208, 0.1);
+    background: linear-gradient(135deg, #1E293B 0%, #1E40AF 100%);
+    border: 1px solid rgba(203, 213, 225, 0.1);
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -164,9 +164,9 @@
   }
 
   .section-dark .card-dark:hover {
-    background: linear-gradient(135deg, #334155 0%, #0891B2 100%);
+    background: linear-gradient(135deg, #334155 0%, #2563EB 100%);
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(8, 145, 178, 0.2);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
   }
 
   .section-dark .card-dark::after {
@@ -189,49 +189,49 @@
   }
 
   .section-dark .text-content {
-    color: #F0FDFA;
+    color: #F1F5F9;
   }
 
   .section-dark .text-muted {
-    color: #A7F3D0;
+    color: #CBD5E1;
   }
 
   .section-dark .accent-highlight {
-    color: #5EEAD4;
+    color: #93C5FD;
   }
 
   .section-dark .bg-accent-highlight {
-    background: linear-gradient(to bottom, #5EEAD4, #2DD4BF);
+    background: linear-gradient(to bottom, #93C5FD, #60A5FA);
   }
 
   /* Dark section button styles */
   .section-dark .btn-dark-primary {
-    background: linear-gradient(to bottom, #0F766E, #134E4A);
-    color: #F0FDFA;
-    border: 1px solid rgba(167, 243, 208, 0.3);
+    background: linear-gradient(to bottom, #1E40AF, #1E3A8A);
+    color: #F1F5F9;
+    border: 1px solid rgba(203, 213, 225, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
 
   .section-dark .btn-dark-primary:hover {
-    background: linear-gradient(to bottom, #0D9488, #0F766E);
-    color: #F0FDFA;
-    border-color: #5EEAD4;
-    box-shadow: 0 4px 12px rgba(94, 234, 212, 0.3);
+    background: linear-gradient(to bottom, #2563EB, #1E40AF);
+    color: #F1F5F9;
+    border-color: #93C5FD;
+    box-shadow: 0 4px 12px rgba(147, 197, 253, 0.3);
     transform: translateY(-1px);
   }
 
   .section-dark .btn-dark-secondary {
-    background: linear-gradient(to bottom, #164E63, #0F172A);
-    color: #A7F3D0;
-    border: 1px solid rgba(167, 243, 208, 0.2);
+    background: linear-gradient(to bottom, #334155, #0F172A);
+    color: #CBD5E1;
+    border: 1px solid rgba(203, 213, 225, 0.2);
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
 
   .section-dark .btn-dark-secondary:hover {
-    background: linear-gradient(to bottom, #0891B2, #164E63);
-    color: #F0FDFA;
-    border-color: #5EEAD4;
-    box-shadow: 0 4px 12px rgba(94, 234, 212, 0.2);
+    background: linear-gradient(to bottom, #475569, #334155);
+    color: #F1F5F9;
+    border-color: #93C5FD;
+    box-shadow: 0 4px 12px rgba(147, 197, 253, 0.2);
     transform: translateY(-1px);
   }
 

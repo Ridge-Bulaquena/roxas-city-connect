@@ -4,134 +4,94 @@ import {
   Facebook, 
   Twitter, 
   Instagram, 
-  Mail, 
-  Phone, 
-  MapPin,
   ArrowRight,
-  Heart
 } from "lucide-react";
-import { CivicFooterBar } from "./CivicFooterBar";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-900">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto footer-spacing">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-mobile text-center sm:text-left">
-          {/* City Info */}
-          <div className="space-y-6 sm:space-y-4 flex flex-col items-center sm:items-start">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-yellow-500 rounded-lg flex items-center justify-center">
-                <span className="font-bold text-white text-lg sm:text-base">RC</span>
+    <footer className="bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        {/* Main Footer Content - Simplified Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8">
+          
+          {/* Column 1: City Info & Social */}
+          <div className="md:col-span-4">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center">
+                <span className="font-bold text-white text-xl">RC</span>
               </div>
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-xl">Roxas City</h3>
-                <p className="text-gray-600 text-sm">Citizen Platform</p>
+              <div>
+                <h3 className="font-bold text-2xl text-slate-900">Roxas City</h3>
+                <p className="text-slate-500">Citizen Platform</p>
               </div>
             </div>
-            <p className="text-gray-600 leading-relaxed text-center sm:text-left max-w-sm">
-              Empowering citizens, councilors, and visitors through data-driven engagement and transparent governance.
+            <p className="text-slate-600 leading-relaxed max-w-sm mb-6">
+              A modern hub for civic engagement, transparency, and community connection.
             </p>
-            <div className="flex justify-center sm:justify-start space-x-4 sm:space-x-3">
-              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
-                <Facebook className="w-4 h-4" />
+            <div className="flex space-x-2">
+              <Button variant="ghost" size="icon" className="text-slate-500 hover:bg-slate-100 hover:text-slate-900">
+                <Facebook className="w-5 h-5" />
               </Button>
-              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
-                <Twitter className="w-4 h-4" />
+              <Button variant="ghost" size="icon" className="text-slate-500 hover:bg-slate-100 hover:text-slate-900">
+                <Twitter className="w-5 h-5" />
               </Button>
-              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
-                <Instagram className="w-4 h-4" />
+              <Button variant="ghost" size="icon" className="text-slate-500 hover:bg-slate-100 hover:text-slate-900">
+                <Instagram className="w-5 h-5" />
               </Button>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-gray-900">Quick Links</h4>
-            <ul className="text-spacing">
-              <li>
-                <a href="/visitor" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-semibold block py-1">
-                  Visitor Portal
-                </a>
-              </li>
+          {/* Spacer */}
+          <div className="hidden md:block md:col-span-1"></div>
+
+          {/* Column 2: Quick Links */}
+          <div className="md:col-span-2">
+            <h4 className="font-semibold text-lg text-slate-900 mb-5">Navigate</h4>
+            <ul className="space-y-3">
               {[
-                'Public Services',
-                'Transparency Dashboard', 
-                'Complaint System',
-                'Budget Voting',
-                'Town Hall Meetings',
-                'Open Data Portal'
+                { name: 'Home', href: '/' },
+                { name: 'Services', href: '/services' },
+                { name: 'Visitor Info', href: '/visitor' },
+                { name: 'Feedback', href: '/share-feedback' },
               ].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm block py-1">
-                    {link}
+                <li key={link.name}>
+                  <a href={link.href} className="text-slate-600 hover:text-slate-900 hover:underline underline-offset-2 transition-colors">
+                    {link.name}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-gray-900">Contact Us</h4>
-            <ul className="text-spacing">
-              <li className="flex items-start justify-center sm:justify-start space-x-3">
-                <MapPin className="w-5 h-5 mt-1 text-blue-600 flex-shrink-0" />
-                <div className="text-sm text-gray-600 text-center sm:text-left">
-                  <div className="font-medium">Roxas City Hall</div>
-                  <div>Roxas City, Capiz 5800</div>
-                </div>
-              </li>
-              <li className="flex items-center justify-center sm:justify-start space-x-3">
-                <Phone className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <span className="text-sm text-gray-600">(036) 621-0153</span>
-              </li>
-              <li className="flex items-center justify-center sm:justify-start space-x-3">
-                <Mail className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <span className="text-sm text-gray-600">info@roxascity.gov.ph</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-gray-900">Stay Updated</h4>
-            <p className="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto sm:mx-0 text-center sm:text-left">
-              Get the latest news about city services, events, and government updates.
+          {/* Column 3: Newsletter */}
+          <div className="md:col-span-5">
+            <h4 className="font-semibold text-lg text-slate-900 mb-5">Stay Connected</h4>
+            <p className="text-slate-600 mb-4">
+              Get city updates and news delivered to your inbox.
             </p>
-            <div className="form-spacing">
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2">
-                <Input 
-                  placeholder="Your email address"
-                  className="flex-1 bg-white border-gray-300 text-gray-900 placeholder-gray-500 rounded-full px-4 py-3"
-                />
-                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-3 self-center sm:self-auto">
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-              <p className="text-xs text-gray-500 text-center sm:text-left mt-3">
-                We respect your privacy. Unsubscribe at any time.
-              </p>
+            <div className="flex w-full max-w-md">
+              <Input 
+                placeholder="Email address"
+                className="flex-1 bg-slate-100 border-slate-200 text-slate-900 placeholder-slate-500 rounded-l-md focus:ring-slate-500 focus:border-slate-500"
+                type="email"
+              />
+              <Button className="bg-slate-800 hover:bg-slate-900 text-white rounded-r-md px-5">
+                <ArrowRight className="w-5 h-5" />
+                <span className="sr-only">Subscribe</span>
+              </Button>
             </div>
+            <p className="text-xs text-slate-500 mt-3">
+              We care about your data. Read our{' '}
+              <a href="#" className="underline hover:text-slate-800">privacy policy</a>.
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="border-t border-gray-700/30">
-        <div className="max-w-7xl mx-auto section-spacing text-center">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-content">Be Heard. Be Counted.</h3>
-          <p className="text-muted mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Your participation shapes the future of Roxas City. Join thousands of citizens in building a better community.
-          </p>
-          <Button className="btn-dark-primary px-8 py-4 text-lg rounded-full bg-gradient-to-r from-blue-600 to-yellow-500 hover:from-blue-700 hover:to-yellow-600 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-            Get Involved Today
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+        {/* Bottom Bar */}
+        <div className="mt-16 sm:mt-24 pt-8 border-t border-slate-200 text-center text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Roxas City Government. All Rights Reserved.</p>
         </div>
       </div>
-
-      <CivicFooterBar />
     </footer>
   );
 };

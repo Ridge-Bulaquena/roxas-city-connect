@@ -33,11 +33,9 @@ function HeroSlider() {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white"
           >
-            <span className="bg-gradient-to-r from-blue-400 to-yellow-400 bg-clip-text text-transparent">
-              Welcome to Roxas City
-            </span>
+            Welcome to Roxas City
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -88,7 +86,7 @@ export default function VisitorHome() {
 
       {/* LIGHT SECTION: Why Roxas */}
       <section className="bg-white py-20 text-center px-6">
-        <h2 className="text-3xl font-bold text-midnight">Why Roxas?</h2>
+        <h2 className="text-3xl font-bold text-slate-900">Why Roxas?</h2>
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
           Beaches, seafood, culture, and community — a true gem of Western Visayas.
         </p>
@@ -101,18 +99,18 @@ export default function VisitorHome() {
 
       {/* Final CTA */}
       <section className="bg-blue-50 py-20 text-center px-6">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Plan Your Visit</h2>
-        <p className="text-gray-600 max-w-lg mx-auto mb-8">
+        <h2 className="text-3xl font-bold mb-4 text-slate-900">Plan Your Visit</h2>
+        <p className="text-slate-600 max-w-lg mx-auto mb-8">
           From cultural calendars to booking tools — we make it easy.
         </p>
         <div className="flex justify-center gap-6 md:gap-4 flex-wrap px-8 md:px-0">
-          <Button asChild className="btn-visitor bg-gradient-to-b from-amber-100 to-yellow-50 hover:from-amber-200 hover:to-yellow-100 text-yellow-800 border border-yellow-200">
+          <Button asChild className="btn-visitor bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 text-white border border-slate-700">
             <a href="/tourism-culture/showcase/community">
               Connect with Locals
               <span className="shine" />
             </a>
           </Button>
-          <Button asChild className="btn-visitor bg-gradient-to-b from-amber-100 to-yellow-50 hover:from-amber-200 hover:to-yellow-100 text-yellow-800 border border-yellow-200">
+          <Button asChild className="btn-visitor bg-white hover:bg-slate-100 text-slate-800 border border-slate-200">
             <a href="/tourism-culture/showcase/attractions">
               Explore the Map
               <span className="shine" />

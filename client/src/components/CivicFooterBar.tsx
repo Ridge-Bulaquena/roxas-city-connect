@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, AnimationGeneratorType } from "framer-motion";
-import { Satellite, X } from "lucide-react";
+import { Satellite, Bot, Send, X } from "lucide-react";
 // Placeholder for Lottie. Replace with your Lottie component and JSON
-const RoxAILottie = ({ isOpen }: { isOpen: boolean }) => (
-  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-emerald-300 flex items-center justify-center shadow-lg">
-    {/* <Lottie animationData={pinoyAiLottie} loop={isOpen} /> */}
-    <span className="text-3xl">🤖</span>
+const LingkodBotLottie = ({ isOpen }: { isOpen: boolean }) => (
+  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-full flex items-center justify-center">
+    <Bot className="w-6 h-6 text-white" />
   </div>
 );
 
 export const CivicFooterBar = () => {
-  const [showCivicPanel, setShowCivicPanel] = useState(false);
-  const [showRoxAI, setShowRoxAI] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
+  const [showLingkodBot, setShowLingkodBot] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,10 +22,16 @@ export const CivicFooterBar = () => {
   }, []);
 
   useEffect(() => {
-    if (showRoxAI && inputRef.current) {
-      setTimeout(() => inputRef.current?.focus(), 350);
+    if (showPanel) {
+      // Logic for when panel is shown
     }
-  }, [showRoxAI]);
+  }, [showPanel]);
+
+  useEffect(() => {
+    if (showLingkodBot && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [showLingkodBot]);
 
   // Animations
   const fadeRise = {
@@ -38,10 +43,9 @@ export const CivicFooterBar = () => {
     visible: { y: 0, opacity: 1, filter: 'blur(0px)', transition: { type: 'spring' as AnimationGeneratorType, stiffness: 200, damping: 22 } },
     exit: { y: '100%', opacity: 0, filter: 'blur(10px)', transition: { type: 'spring' as AnimationGeneratorType, stiffness: 300, damping: 30 } }
   };
-  const roxAIVariants = {
-    hidden: { scale: 0.7, opacity: 0, y: 40 },
-    visible: { scale: 1, opacity: 1, y: 0, transition: { type: 'spring' as AnimationGeneratorType, stiffness: 300, damping: 22 } },
-    exit: { scale: 0.7, opacity: 0, y: 40, transition: { type: 'spring' as AnimationGeneratorType, stiffness: 400, damping: 30 } }
+  const lingkodBotVariants = {
+    hidden: { x: "100%", opacity: 0 },
+    visible: { x: 0, opacity: 1 },
   };
   const Divider = () => (
     <div className="hidden md:block w-8 h-1 rounded-full mx-4 bg-gradient-to-r from-cyan-400 via-emerald-300 to-yellow-200 shadow-[0_0_16px_2px_rgba(34,197,246,0.25)] animate-pulse" />
@@ -63,7 +67,7 @@ export const CivicFooterBar = () => {
             <motion.button
               whileHover={{ scale: 1.08, boxShadow: "0 0 0 4px #38bdf8, 0 0 16px #38bdf8" }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => setShowCivicPanel(true)}
+              onClick={() => setShowPanel(true)}
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-900/80 to-emerald-900/60 border border-cyan-400/30 hover:border-cyan-300/60 transition-all duration-300 text-white font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow"
               aria-label="Open Smart Civic Panel"
             >
@@ -87,46 +91,46 @@ export const CivicFooterBar = () => {
             </span>
           </div>
           {!isMobile && <Divider />}
-          {/* Right: RoxAI Chatmate */}
+          {/* Right: LingkodBot */}
           {!isMobile ? (
             <motion.button
               whileHover={{ scale: 1.08, boxShadow: "0 0 0 4px #34d399, 0 0 16px #34d399" }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => setShowRoxAI(true)}
+              onClick={() => setShowLingkodBot(true)}
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-900/80 to-cyan-900/60 border border-emerald-400/30 hover:border-emerald-300/60 transition-all duration-300 text-white font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-emerald-400/50 shadow"
-              aria-label="Open RoxAI Chatmate"
+              aria-label="Open LingkodBot"
             >
               <motion.span
                 animate={{ scale: [1, 1.12, 1], opacity: [1, 0.8, 1] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <RoxAILottie isOpen={showRoxAI} />
+                <LingkodBotLottie isOpen={showLingkodBot} />
               </motion.span>
-              <span className="hidden md:inline-block text-emerald-100">RoxAI Chatmate</span>
+              <span className="hidden md:inline-block text-emerald-100">LingkodBot</span>
             </motion.button>
           ) : (
             // Mobile FAB
             <motion.button
               whileHover={{ scale: 1.13, boxShadow: "0 0 0 4px #34d399, 0 0 16px #34d399" }}
               whileTap={{ scale: 0.93 }}
-              onClick={() => setShowRoxAI(true)}
+              onClick={() => setShowLingkodBot(true)}
               className="fixed bottom-20 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 via-emerald-600 to-cyan-500 shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
-              aria-label="Open RoxAI Chatmate"
+              aria-label="Open LingkodBot"
             >
-              <RoxAILottie isOpen={showRoxAI} />
+              <LingkodBotLottie isOpen={showLingkodBot} />
             </motion.button>
           )}
         </div>
       </motion.footer>
       {/* Smart Civic Panel Modal */}
       <AnimatePresence>
-        {showCivicPanel && !isMobile && (
+        {showPanel && !isMobile && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowCivicPanel(false)}
+            onClick={() => setShowPanel(false)}
           >
             <motion.div
               variants={panelVariants}
@@ -169,7 +173,7 @@ export const CivicFooterBar = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setShowCivicPanel(false)}
+                onClick={() => setShowPanel(false)}
                 className="absolute top-4 right-4 text-gray-400 hover:text-cyan-300 text-2xl font-bold focus:outline-none transition-colors"
                 aria-label="Close Civic Panel"
               >
@@ -179,63 +183,54 @@ export const CivicFooterBar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* RoxAI Chatmate Modal */}
+      {/* LingkodBot Modal */}
       <AnimatePresence>
-        {showRoxAI && (
+        {showLingkodBot && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowRoxAI(false)}
+            className="fixed top-0 right-0 h-full w-full max-w-md z-50 bg-gray-900/90 backdrop-blur-lg shadow-2xl"
+            variants={lingkodBotVariants}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            onClick={e => e.stopPropagation()}
           >
-            <motion.div
-              variants={roxAIVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="relative bg-gray-900 rounded-t-2xl md:rounded-2xl shadow-2xl p-6 w-full max-w-md border border-emerald-400/30 flex flex-col items-center"
-              onClick={e => e.stopPropagation()}
-            >
-              {/* Lottie Pinoy AI + Chat bubble that transforms into chat input */}
-              <motion.div
-                initial={{ scale: 0.7, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.7, opacity: 0 }}
-                transition={{ type: 'spring' as AnimationGeneratorType, stiffness: 300, damping: 22 }}
-                className="mb-2"
-              >
-                <RoxAILottie isOpen={showRoxAI} />
-              </motion.div>
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ type: 'spring' as AnimationGeneratorType, stiffness: 300, damping: 22, delay: 0.15 }}
-                className="w-full max-w-xs bg-white rounded-2xl shadow-lg p-4 text-gray-900 text-sm mb-4 relative"
-                style={{ minHeight: 60 }}
-              >
-                <div className="mb-2">Hi! I'm RoxAI. How can I help you today?</div>
-                <form className="flex gap-2 mt-2">
+            <div className="flex flex-col h-full">
+              <header className="flex items-center justify-between p-4 border-b border-emerald-500/20">
+                <div className="flex items-center gap-3">
+                  <LingkodBotLottie isOpen={showLingkodBot} />
+                  <h3 className="text-xl font-bold text-emerald-100">LingkodBot</h3>
+                </div>
+                <button
+                  onClick={() => setShowLingkodBot(false)}
+                  className="p-1 rounded-full text-gray-400 hover:bg-gray-700"
+                  aria-label="Close LingkodBot"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </header>
+              <main className="flex-1 p-6 space-y-4 overflow-y-auto">
+                <div className="flex items-start gap-3">
+                  <LingkodBotLottie isOpen={true} />
+                  <div className="bg-gray-800 p-3 rounded-lg max-w-xs">
+                    <div className="mb-2">Hi! I'm LingkodBot. How can I help you today?</div>
+                  </div>
+                </div>
+              </main>
+              <footer className="p-4 border-t border-emerald-500/20">
+                <div className="flex items-center gap-3">
                   <input
                     ref={inputRef}
                     type="text"
-                    className="flex-1 rounded-full border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                    placeholder="Type your question..."
+                    placeholder="Ask LingkodBot..."
+                    className="flex-1 bg-gray-800 border border-gray-700 rounded-full px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
-                  <button type="submit" className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-full px-4 py-2 font-semibold transition">Send</button>
-                </form>
-              </motion.div>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowRoxAI(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-emerald-300 text-2xl font-bold focus:outline-none transition-colors"
-                aria-label="Close RoxAI Chatmate"
-              >
-                <X className="w-6 h-6" />
-              </motion.button>
-            </motion.div>
+                  <button className="bg-emerald-500 text-white rounded-full p-3 hover:bg-emerald-600">
+                    <Send className="w-5 h-5" />
+                  </button>
+                </div>
+              </footer>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

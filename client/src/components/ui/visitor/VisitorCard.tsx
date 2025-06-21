@@ -34,7 +34,7 @@ export function VisitorCard({
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <h3 className="text-xl font-bold text-content mb-2 cursor-help">
+            <h3 className="text-xl font-bold text-slate-900 mb-2 cursor-help">
               {title}
             </h3>
           </TooltipTrigger>
@@ -43,12 +43,12 @@ export function VisitorCard({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <p className="text-muted text-sm mb-4">{subtitle}</p>
-      <p className="text-muted flex-grow">{description}</p>
-      <Button asChild className="btn-visitor mt-6 self-start">
+      <p className="text-slate-500 text-sm mb-4 font-semibold">{subtitle}</p>
+      <p className="text-slate-600 flex-grow">{description}</p>
+      <Button asChild className="btn-visitor mt-6 self-start bg-slate-800 hover:bg-slate-900 text-white">
         <a href={href}>
           Explore
-          <ArrowRight className="ml-2" />
+          <ArrowRight className="ml-2 h-4 w-4" />
           <span className="shine" />
         </a>
       </Button>

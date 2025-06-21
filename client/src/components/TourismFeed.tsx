@@ -34,13 +34,13 @@ export const TourismFeed = ({ userType }: TourismFeedProps) => {
   ];
 
   return (
-    <section className="py-20 bg-[#16213a]">
+    <section className="py-20 bg-gradient-to-br from-[#101a33] via-[#16213a] to-[#1a237e] text-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             Discover Roxas Culture
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Experience our rich heritage, vibrant festivals, and warm hospitality. 
             From traditional celebrations to modern attractions, there's always something happening in Roxas.
           </p>
@@ -48,24 +48,24 @@ export const TourismFeed = ({ userType }: TourismFeedProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {events.map((event, index) => (
-            <Card key={index} className="card-dark hover-lift">
+            <Card key={index} className="card-dark hover-lift bg-white/5 border border-white/10 text-white">
               <CardHeader>
                 <div className="text-4xl mb-4 text-center">{event.image}</div>
-                <CardTitle className="text-content">{event.title}</CardTitle>
-                <CardDescription className="text-muted">
+                <CardTitle className="text-white font-bold">{event.title}</CardTitle>
+                <CardDescription className="text-gray-200">
                   {event.description}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="flex items-center text-gray-300 text-sm">
+                <div className="flex items-center text-gray-200 text-sm">
                   <Calendar className="w-4 h-4 mr-2 text-blue-400" />
                   {event.date}
                 </div>
-                <div className="flex items-center text-gray-300 text-sm">
+                <div className="flex items-center text-gray-200 text-sm">
                   <MapPin className="w-4 h-4 mr-2 text-green-400" />
                   {event.location}
                 </div>
-                <div className="flex items-center text-gray-300 text-sm">
+                <div className="flex items-center text-gray-200 text-sm">
                   <Users className="w-4 h-4 mr-2 text-purple-400" />
                   {event.attendees} expected
                 </div>

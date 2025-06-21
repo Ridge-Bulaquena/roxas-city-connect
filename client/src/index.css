@@ -566,6 +566,24 @@ html {
   animation: marquee 18s linear infinite;
 }
 
+/* Faster marquee animations for framer-motion */
+@keyframes marquee-fast {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-mobile {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Mobile-specific faster animation */
+@media (max-width: 768px) {
+  .marquee-container {
+    animation-duration: 12s !important;
+  }
+}
+
 .btn-visitor {
   background: #22344D;
   color: #fff;

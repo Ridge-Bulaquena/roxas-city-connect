@@ -60,7 +60,7 @@ export default function VisitorHome() {
       <HeroSlider />
 
       {/* DARK SECTION: Visitor Types */}
-      <section className="bg-[#0B1523] py-20 text-white">
+      <section className="section-dark py-20 text-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 md:gap-6 px-8 md:px-6">
           <VisitorCard
             title="🌴 Tourist"
@@ -100,9 +100,9 @@ export default function VisitorHome() {
       </section>
 
       {/* DARK SECTION: Final CTA */}
-      <section className="bg-[#121C2E] py-20 text-white text-center px-6">
+      <section className="section-dark py-20 text-white text-center px-6">
         <h2 className="text-3xl font-bold mb-4">Plan Your Visit</h2>
-        <p className="text-[#9AAEC4] max-w-lg mx-auto mb-8">
+        <p className="text-muted max-w-lg mx-auto mb-8">
           From cultural calendars to booking tools — we make it easy.
         </p>
         <div className="flex justify-center gap-6 md:gap-4 flex-wrap px-8 md:px-0">

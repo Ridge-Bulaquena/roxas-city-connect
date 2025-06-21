@@ -117,6 +117,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
                     size="lg" 
                     variant="outline"
                     className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => window.location.href = '/services'}
                   >
                     City Services
                   </Button>

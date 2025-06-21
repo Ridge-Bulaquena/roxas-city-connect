@@ -70,6 +70,12 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
 
   const navItems = [
     {
+      id: 'digitalservices',
+      title: 'Digital Services',
+      tooltip: 'Online city services 24/7.',
+      href: '/services'
+    },
+    {
       id: 'services',
       title: 'Public Services',
       tooltip: 'Access vital local programs.',
@@ -251,16 +257,25 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
               <div
                 key={item.id}
                 className="relative"
-                onMouseEnter={() => handleMouseEnter(item.id)}
+                onMouseEnter={() => !item.href && handleMouseEnter(item.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="flex items-center space-x-1 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors group font-inter font-medium">
-                  <span>{item.title}</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
-                </button>
+                {item.href ? (
+                  <a 
+                    href={item.href}
+                    className="flex items-center space-x-1 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors group font-inter font-medium"
+                  >
+                    <span>{item.title}</span>
+                  </a>
+                ) : (
+                  <button className="flex items-center space-x-1 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors group font-inter font-medium">
+                    <span>{item.title}</span>
+                    <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  </button>
+                )}
 
                 {/* Mega Menu Dropdown */}
-                {activeDropdown === item.id && (
+                {activeDropdown === item.id && item.items && (
                   <div 
                     className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden animate-fade-in z-50"
                     onMouseEnter={() => handleMouseEnter(item.id)}
@@ -269,7 +284,7 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                     <div className="p-6">
                       <div className="text-sm text-blue-600 mb-4 font-inter font-medium">{item.tooltip}</div>
                       <div className="grid grid-cols-2 gap-4">
-                        {item.items.map((subItem, index) => {
+                        {item.items?.map((subItem, index) => {
                           const IconComponent = subItem.icon;
                           return (
                             <div

@@ -75,19 +75,20 @@ export const TourismFeed = () => {
         {discoverCards.map((card, i) => (
           <motion.div
             key={card.title}
-            className="group bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300"
+            className="group card-shine-container bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-8 flex flex-col items-center transition-all duration-300"
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.3 }}
             custom={i}
             variants={cardVariants}
             whileHover={{
-              scale: 1.06,
-              rotate: -1.5,
+              y: -8,
+              scale: 1.03,
               boxShadow: "0 8px 32px 0 rgba(56, 189, 248, 0.18)",
-              transition: { type: "spring", stiffness: 300, damping: 18 },
+              transition: { type: "spring", stiffness: 350, damping: 20 },
             }}
           >
+            <div className="card-shine-effect" />
             <motion.span
               className="mb-6 transition-transform group-hover:scale-110"
               whileHover={{ y: -6, scale: 1.18 }}

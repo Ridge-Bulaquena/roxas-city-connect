@@ -140,9 +140,21 @@
     padding: 5rem 0; /* More vertical padding for sections */
   }
 
+  @media (max-width: 1024px) {
+    .section-dark {
+      padding: 4rem 2rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .section-dark {
-      padding: 4rem 0;
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-dark {
+      padding: 2.5rem 1rem;
     }
   }
 
@@ -481,6 +493,203 @@ html {
   background: #a1a1a1;
 }
 
+/* Mobile and Tablet Responsive Spacing */
+@layer utilities {
+  /* Container spacing utilities */
+  .container-mobile {
+    @apply px-4 mx-auto;
+  }
+
+  @media (min-width: 640px) {
+    .container-mobile {
+      @apply px-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container-mobile {
+      @apply px-8;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-mobile {
+      @apply px-6;
+    }
+  }
+
+  /* Section spacing utilities */
+  .section-spacing {
+    @apply py-12 px-4;
+  }
+
+  @media (min-width: 640px) {
+    .section-spacing {
+      @apply py-16 px-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      @apply py-20 px-8;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing {
+      @apply py-24 px-6;
+    }
+  }
+
+  /* Card spacing utilities */
+  .card-spacing {
+    @apply p-4 m-2;
+  }
+
+  @media (min-width: 640px) {
+    .card-spacing {
+      @apply p-6 m-3;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .card-spacing {
+      @apply p-8 m-4;
+    }
+  }
+
+  /* Grid spacing utilities */
+  .grid-mobile {
+    @apply grid gap-4;
+  }
+
+  @media (min-width: 640px) {
+    .grid-mobile {
+      @apply gap-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid-mobile {
+      @apply gap-8;
+    }
+  }
+
+  /* Text spacing utilities */
+  .text-spacing {
+    @apply space-y-4;
+  }
+
+  @media (min-width: 640px) {
+    .text-spacing {
+      @apply space-y-5;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .text-spacing {
+      @apply space-y-6;
+    }
+  }
+
+  /* Button spacing utilities */
+  .btn-mobile {
+    @apply px-4 py-2 mx-2 my-2;
+  }
+
+  @media (min-width: 640px) {
+    .btn-mobile {
+      @apply px-6 py-3 mx-3 my-3;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .btn-mobile {
+      @apply px-8 py-3 mx-4 my-2;
+    }
+  }
+
+  /* Navigation spacing utilities */
+  .nav-spacing {
+    @apply px-4 py-3;
+  }
+
+  @media (min-width: 640px) {
+    .nav-spacing {
+      @apply px-6 py-4;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .nav-spacing {
+      @apply px-8 py-4;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-spacing {
+      @apply px-6 py-4;
+    }
+  }
+
+  /* Form spacing utilities */
+  .form-spacing {
+    @apply space-y-4 p-4;
+  }
+
+  @media (min-width: 640px) {
+    .form-spacing {
+      @apply space-y-6 p-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .form-spacing {
+      @apply space-y-8 p-8;
+    }
+  }
+
+  /* Hero section specific spacing */
+  .hero-spacing {
+    @apply py-12 px-4;
+  }
+
+  @media (min-width: 640px) {
+    .hero-spacing {
+      @apply py-16 px-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-spacing {
+      @apply py-20 px-8;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-spacing {
+      @apply py-24 px-6;
+    }
+  }
+
+  /* Footer spacing utilities */
+  .footer-spacing {
+    @apply py-8 px-4;
+  }
+
+  @media (min-width: 640px) {
+    .footer-spacing {
+      @apply py-12 px-6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .footer-spacing {
+      @apply py-16 px-8;
+    }
+  }
+}
+
 /* Hover effects */
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.3s ease;
@@ -524,7 +733,7 @@ html {
 }
 
 .btn-primary {
-  @apply px-6 py-2 relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-200;
+  @apply relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-200;
   background: linear-gradient(to bottom, #fef3c7, #fefce8);
   color: #92400e;
   border: 1px solid #fde68a;
@@ -534,6 +743,19 @@ html {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  padding: 0.5rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .btn-primary {
+    padding: 0.75rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn-primary {
+    padding: 0.75rem 2.5rem;
+  }
 }
 
 .btn-primary:hover {
@@ -585,10 +807,17 @@ html {
   100% { transform: translateX(-50%); }
 }
 
-/* Mobile-specific faster animation */
+/* Mobile-specific faster animation with improved spacing */
 @media (max-width: 768px) {
   .marquee-container {
     animation-duration: 6s !important;
+    padding: 0.75rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .marquee-container {
+    padding: 1rem 0;
   }
 }
 
@@ -597,10 +826,8 @@ html {
   color: #92400e;
   border: 1px solid #fde68a;
   border-radius: 100px;
-  padding: 0.75rem 2rem;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
@@ -608,6 +835,24 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .btn-visitor {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    margin: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn-visitor {
+    padding: 0.75rem 2.5rem;
+    margin: 1rem;
+  }
 }
 .btn-visitor:hover, .btn-visitor:focus {
   background: linear-gradient(to bottom, #fde68a, #fef3c7);

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -374,8 +375,7 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
       </div>
 
       {/* Role-based notification banner */}
-      {userType === 'resident' && 
-            <MarqueeBanner />}
+      {userType === 'resident' && <MarqueeBanner />}
     </nav>
   );
 };

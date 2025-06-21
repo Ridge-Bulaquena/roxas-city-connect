@@ -27,8 +27,7 @@ export default function MarqueeBanner() {
           ease: "linear",
         }}
       >
-        {/* Duplicate headlines for seamless loop */}
-        {[...headlines, ...headlines].map((headline, index) => (
+        {Array(4).fill(headlines).flat().map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

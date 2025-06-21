@@ -1,4 +1,6 @@
+
 import { useState, useEffect } from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export function Navbar() {
   const [userType, setUserType] = useState(() => localStorage.getItem('userType') || 'resident');

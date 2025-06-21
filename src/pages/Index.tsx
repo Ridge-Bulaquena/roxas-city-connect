@@ -1,12 +1,6 @@
+
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
-import { HeroSection } from "@/components/HeroSection";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { ComplaintSystem } from "@/components/ComplaintSystem";
-import { LiveDashboards } from "@/components/LiveDashboards";
-import { DigitalParticipation } from "@/components/DigitalParticipation";
-import { OpenDataSpotlight } from "@/components/OpenDataSpotlight";
-import { TourismFeed } from "@/components/TourismFeed";
 import { Footer } from "@/components/Footer";
 import { usePersonalization } from "@/hooks/usePersonalization";
 import VisitorHome from "@/components/VisitorHome";
@@ -23,15 +17,7 @@ const Index = () => {
         {userType === 'visitor' ? (
           <VisitorHome />
         ) : (
-          <>
-            <HeroSection userType={userType} hasVoted={hasVoted} />
-            <ServicesGrid userType={userType} />
-            <ComplaintSystem />
-            <LiveDashboards userType={userType} />
-            <DigitalParticipation hasVoted={hasVoted} />
-            <OpenDataSpotlight />
-            <TourismFeed userType={userType} />
-          </>
+          <ResidentHome userType={userType} hasVoted={hasVoted} />
         )}
       </main>
       <Footer />

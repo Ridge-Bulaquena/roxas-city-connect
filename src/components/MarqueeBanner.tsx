@@ -16,15 +16,28 @@ const headlines = [
   "📢 Public Hearing Alerts – Subscribe for instant updates.",
 ];
 
+function shuffle(array: string[]) {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export default function MarqueeBanner() {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
+  const [shuffled, setShuffled] = useState(() => shuffle(headlines));
 
   useLayoutEffect(() => {
     if (marqueeRef.current) {
-      setWidth(marqueeRef.current.scrollWidth / 2); // Only one duplicate
+      setWidth(marqueeRef.current.scrollWidth / 2);
     }
-  }, []);
+  }, [shuffled]);
+
+  // Re-shuffle on every mount for variety
+  // Optionally, you could re-shuffle on every animation loop for even more variety
 
   return (
     <div className="overflow-hidden bg-yellow-50 border-b border-yellow-300 py-2">
@@ -34,12 +47,12 @@ export default function MarqueeBanner() {
         animate={width ? { x: [0, -width] } : {}}
         transition={{
           repeat: Infinity,
-          duration: width ? width / 40 : 60, // 40px/sec, adjust as needed
+          duration: width ? width / 40 : 60,
           ease: "linear",
         }}
         style={{ willChange: "transform" }}
       >
-        {Array(60).fill(headlines).flat().map((headline, index) => (
+        {[...shuffled, ...shuffled].map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

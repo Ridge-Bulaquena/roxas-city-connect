@@ -39,7 +39,7 @@ const discoverCards = [
     features: [
       "Scroll-based animation of folk stories",
       "Interactive infographic of attire/tools",
-      "Quiz: "How Capiznon Are You?"",
+      'Quiz: "How Capiznon Are You?"',
       "Voice-over narrations of local tales",
       "Community oral histories"
     ]

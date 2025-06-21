@@ -36,8 +36,10 @@ export default function MarqueeBanner() {
     }
   }, [shuffled]);
 
-  // Re-shuffle on every mount for variety
-  // Optionally, you could re-shuffle on every animation loop for even more variety
+  // Reshuffle on every animation loop
+  const handleAnimationComplete = () => {
+    setShuffled(shuffle(headlines));
+  };
 
   return (
     <div className="overflow-hidden bg-yellow-50 border-b border-yellow-300 py-2">
@@ -51,6 +53,7 @@ export default function MarqueeBanner() {
           ease: "linear",
         }}
         style={{ willChange: "transform" }}
+        onAnimationComplete={handleAnimationComplete}
       >
         {[...shuffled, ...shuffled].map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">

@@ -137,11 +137,6 @@ export const Footer = () => {
             <div className="text-sm text-muted text-center sm:text-left h-10 flex items-center">
               © 2025 Roxas City Government. All rights reserved.
             </div>
-            <div className="flex items-center justify-center space-x-2 text-sm text-muted h-10 leading-none">
-              <span className="align-middle">Made with</span>
-              <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse align-middle" />
-              <span className="align-middle">for the people of Roxas City</span>
-            </div>
           </div>
         </div>
       </div>

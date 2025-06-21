@@ -22,10 +22,10 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
     switch (userType) {
       case 'resident':
         return {
-          title: "Shape Roxas with Every Click",
-          subtitle: "Your voice matters. Participate in city decisions, track government progress, and build a better community together.",
-          cta: hasVoted ? "View Results" : "Vote Now",
-          badge: hasVoted ? "Already Voted" : "Voting Open"
+          title: "Your City, Your Voice, Your Future",
+          subtitle: "Roxas City Connect empowers every citizen to participate in building our community. Access city services, share your ideas, and stay connected with your local government.",
+          cta: "Get Started",
+          badge: "Welcome Resident"
         };
       case 'official':
         return {
@@ -100,15 +100,37 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
             {typewriterText}
           </motion.p>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
-            >
-              {content.cta}
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              >
+                {content.cta}
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              
+              {userType === 'resident' && (
+                <>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    City Services
+                  </Button>
+                  
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Share Feedback
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Stats */}

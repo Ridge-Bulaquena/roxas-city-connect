@@ -15,7 +15,7 @@ export const usePersonalization = () => {
   const [state, setState] = useState<PersonalizationState>(() => {
     const stored = localStorage.getItem('roxas-user-preferences');
     return stored ? JSON.parse(stored) : {
-      userType: 'visitor',
+      userType: 'resident',
       lastPageVisited: '/',
       location: '',
       hasVoted: false,

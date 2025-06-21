@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Palette, Volume2, Landmark } from "lucide-react";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 
 const discoverCards = [
   {
@@ -8,21 +9,24 @@ const discoverCards = [
     title: "Roxas City Visual Arts Gallery",
     cta: "Explore Local Artistry",
     desc: "Step into a digital gallery of Capiznon visual art — from paintings and murals to modern installations.",
-    link: "/discover/art-gallery"
+    link: "/discover/art-gallery",
+    tooltip: "Browse a virtual gallery of local paintings, murals, and installations. Filter by artist, style, or era, and discover the creative spirit of Roxas City."
   },
   {
     icon: <Volume2 className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
     title: "Roxas City Performing Arts & Music",
     cta: "Hear the Rhythm of Roxas",
     desc: "Celebrate the sounds and movements of Capiznon culture — from traditional folk dances to contemporary performances.",
-    link: "/discover/performing-arts"
+    link: "/discover/performing-arts",
+    tooltip: "Watch and listen to local performances, music, and dance. See upcoming events, enjoy video and audio showcases, and join the celebration."
   },
   {
     icon: <Landmark className="w-12 h-12 text-yellow-200 drop-shadow-lg" />,
     title: "Capiznon Culture & Traditions",
     cta: "Dive Into Capiznon Heritage",
     desc: "Discover the deep-rooted traditions, clothing, languages, festivals, and folklore of Roxas City and Capiz.",
-    link: "/discover/capiznon-culture"
+    link: "/discover/capiznon-culture",
+    tooltip: "Explore Capiznon stories, traditions, and heritage. Enjoy interactive stories, infographics, and quizzes about local culture."
   }
 ];
 
@@ -76,12 +80,21 @@ export const TourismFeed = () => {
             </motion.span>
             <h3 className="text-xl font-semibold text-gray-100 mb-2 tracking-widest uppercase text-center">{card.title}</h3>
             <p className="text-gray-300 text-center mb-4">{card.desc}</p>
-            <Link to={card.link} className="relative group mt-2 mb-4">
-              <span className="btn-butter px-6 py-2 rounded-full font-semibold text-yellow-900 bg-gradient-to-r from-yellow-200 to-yellow-100 shadow hover:from-yellow-100 hover:to-yellow-200 transition-all duration-200 overflow-hidden inline-flex items-center">
-                {card.cta}
-                <span className="shine absolute left-0 top-0 w-full h-full pointer-events-none" />
-              </span>
-            </Link>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link to={card.link} className="relative group mt-2 mb-4">
+                    <span className="btn-butter px-6 py-2 rounded-full font-semibold text-yellow-900 bg-gradient-to-r from-yellow-200 to-yellow-100 shadow hover:from-yellow-100 hover:to-yellow-200 transition-all duration-200 overflow-hidden inline-flex items-center">
+                      {card.cta}
+                      <span className="shine absolute left-0 top-0 w-full h-full pointer-events-none" />
+                    </span>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-xs text-sm text-gray-900 font-medium">
+                  {card.tooltip}
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </motion.div>
         ))}
       </div>

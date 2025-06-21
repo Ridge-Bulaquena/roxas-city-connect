@@ -760,7 +760,7 @@ html {
 
 .btn-primary:hover {
   background: linear-gradient(to bottom, #fde68a, #fef3c7);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.18);
 }
 .btn-primary .shine {
   position: absolute;
@@ -768,7 +768,7 @@ html {
   left: -60%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, #3380ffcc 0%, transparent 100%);
+  background: linear-gradient(90deg, #fffbe6 0%, #fde68a 60%, transparent 100%);
   opacity: 0;
   pointer-events: none;
   border-radius: 100px;
@@ -874,4 +874,33 @@ html {
 .btn-visitor:focus .shine {
   opacity: 1;
   animation: shine 0.7s linear;
+}
+
+.tourism-icon-mono-blue {
+  stroke: url(#tourism-blue-gradient);
+  fill: none;
+}
+.tourism-icon-glow {
+  filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #2563eb);
+  animation: tourismGlowPulse 2.2s infinite alternate;
+}
+@keyframes tourismGlowPulse {
+  0% { filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #2563eb); }
+  60% { filter: drop-shadow(0 0 16px #38bdf8) drop-shadow(0 0 32px #2563eb); }
+  100% { filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #2563eb); }
+}
+.tourism-icon-shine {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(56,189,248,0.12) 60%, transparent 100%);
+  mix-blend-mode: lighten;
+  border-radius: 9999px;
+  animation: tourismShineMove 2.8s linear infinite;
+  opacity: 0.7;
+}
+@keyframes tourismShineMove {
+  0% { transform: translateX(-60%) skewX(-18deg); }
+  60% { transform: translateX(120%) skewX(-18deg); }
+  100% { transform: translateX(120%) skewX(-18deg); }
 }

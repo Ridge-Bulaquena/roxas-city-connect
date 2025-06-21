@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 import { ElementType } from "react";
 
@@ -24,20 +24,43 @@ export function ServiceCard({
     IconComp = LucideIcons["Circle"];
   }
   const Icon = IconComp as ElementType;
+
+  // Animation variants for cascading children
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 25,
+        staggerChildren: 0.18,
+        delayChildren: 0.18,
+      },
+    },
+  };
+  const childVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 180,
+        damping: 18,
+        delay: i * 0.04,
+      },
+    }),
+  };
+
   return (
     <motion.div
       className="group relative flex flex-col items-center justify-between h-full rounded-2xl bg-white border border-slate-200 shadow-sm cursor-pointer overflow-hidden card-hover"
-      whileHover={{ 
-        y: -8, 
-        scale: 1.03, 
-        boxShadow: "0 20px 40px rgba(30, 58, 138, 0.1)",
-        transition: { duration: 0.3, ease: "easeOut" }
-      }}
-      whileTap={{ scale: 0.97 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.1 }}
       tabIndex={0}
       role="button"
       aria-label={title}
@@ -53,15 +76,29 @@ export function ServiceCard({
         />
       </div>
       <div className="flex flex-col items-center justify-center flex-1 py-8 px-4 w-full">
-        <motion.span 
+        <motion.span
           className="mb-4 rounded-xl bg-blue-50 p-3 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300"
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          variants={childVariants}
+          custom={0}
         >
           <Icon size={36} strokeWidth={1.5} className="text-blue-700 group-hover:text-blue-800 transition-colors duration-300 icon-bounce" aria-hidden="true" />
         </motion.span>
-        <h3 className="text-lg font-inter font-semibold text-slate-800 mb-2 text-center">{title}</h3>
-        <p className="text-slate-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]">{description}</p>
+        <motion.h3
+          className="text-lg font-inter font-semibold text-slate-800 mb-2 text-center"
+          variants={childVariants}
+          custom={1}
+        >
+          {title}
+        </motion.h3>
+        <motion.p
+          className="text-slate-600 font-normal font-[Figtree] text-sm text-center mb-4 min-h-[48px]"
+          variants={childVariants}
+          custom={2}
+        >
+          {description}
+        </motion.p>
       </div>
       <div className="w-full px-4 pb-6 flex flex-col items-center">
         <div className="relative w-full flex justify-center items-center">
@@ -74,6 +111,8 @@ export function ServiceCard({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            variants={childVariants}
+            custom={3}
           >
             {cta}
             <span className="shine" />

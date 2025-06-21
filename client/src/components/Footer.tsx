@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Heart
 } from "lucide-react";
+import { CivicFooterBar } from "./CivicFooterBar";
 
 export const Footer = () => {
   return (
@@ -130,16 +131,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-700/30 bg-gradient-to-r from-slate-900/80 to-blue-900/80">
-        <div className="max-w-7xl mx-auto nav-spacing">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-spacing h-10">
-            <div className="text-sm text-muted text-center sm:text-left h-10 flex items-center">
-              © 2025 Roxas City Government. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
+      <CivicFooterBar />
     </footer>
   );
 };

@@ -1,7 +1,7 @@
 import { ServiceCard } from "./ServiceCard";
 import { motion } from "framer-motion";
 import { useTypewriter } from "@/hooks/useTypewriter";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const SERVICES = [
   {
@@ -92,10 +92,29 @@ const SERVICES = [
 
 const HERO_TYPEWRITER = `City Services at Your Fingertips\nComprehensive public services designed to serve every citizen, from healthcare to education, infrastructure to cultural preservation.`;
 
+// Utility hook to get current grid columns based on breakpoints
+function useResponsiveColumns() {
+  const [cols, setCols] = useState(1);
+  useEffect(() => {
+    function updateCols() {
+      if (window.innerWidth >= 1280) setCols(4);
+      else if (window.innerWidth >= 1024) setCols(3);
+      else if (window.innerWidth >= 768) setCols(2);
+      else setCols(1);
+    }
+    updateCols();
+    window.addEventListener("resize", updateCols);
+    return () => window.removeEventListener("resize", updateCols);
+  }, []);
+  return cols;
+}
+
 export const ServicesGrid = () => {
   const [startTypewriter, setStartTypewriter] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const typewriterText = useTypewriter(HERO_TYPEWRITER, { speed: 22, delay: 0, onDone: undefined });
+  const cols = useResponsiveColumns();
+  const DELAY_UNIT = 0.22; // seconds, for a regal, visible sequence
 
   // Only start typewriter when in view
   const handleViewportEnter = () => {
@@ -128,40 +147,46 @@ export const ServicesGrid = () => {
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.12,
-                delayChildren: 0.2,
+                staggerChildren: 0,
+                delayChildren: 0,
               },
             },
           }}
           initial="hidden"
           animate="visible"
         >
-          {SERVICES.map((service, idx) => (
-            <motion.div
-              key={service.title}
-              variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 12,
-                  }
-                },
-              }}
-            >
-              <ServiceCard
-                icon={service.icon as any}
-                title={service.title}
-                description={service.description}
-                cta={service.cta}
-                onClick={() => window.location.href = service.route}
-              />
-            </motion.div>
-          ))}
+          {SERVICES.map((service, idx) => {
+            const row = Math.floor(idx / cols);
+            const col = idx % cols;
+            const delay = (row * cols + col) * DELAY_UNIT;
+            return (
+              <motion.div
+                key={service.title}
+                variants={{
+                  hidden: { opacity: 0, y: -80, scale: 0.92 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 70,
+                      damping: 18,
+                      delay,
+                    },
+                  },
+                }}
+              >
+                <ServiceCard
+                  icon={service.icon as any}
+                  title={service.title}
+                  description={service.description}
+                  cta={service.cta}
+                  onClick={() => window.location.href = service.route}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </motion.section>

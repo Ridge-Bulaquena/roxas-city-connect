@@ -4,27 +4,52 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import { ArrowRight } from "lucide-react";
 import { VisitorCard } from "@/components/ui/visitor/VisitorCard";
 import { IconCard } from "@/components/ui/visitor/IconCard";
+import { useTypewriter } from "@/hooks/useTypewriter";
+import { useState, useEffect } from "react";
 
-// Simple HeroSlider placeholder
+// Enhanced HeroSlider with typewriter effect
 function HeroSlider() {
+  const [isVisible, setIsVisible] = useState(false);
+  const typewriterText = useTypewriter("Explore, invest, and experience culture — all in one platform built for visitors like you.", {
+    speed: 30,
+    delay: 800,
+    onDone: undefined,
+  });
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="bg-[#0B1523] text-white py-20 px-6 text-center pt-20">
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: "spring", delay: 0.1 }}
-        className="text-4xl md:text-5xl font-bold mb-4"
-      >
-        Welcome to Roxas City
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, type: "spring" }}
-        className="text-lg text-[#9AAEC4] max-w-2xl mx-auto"
-      >
-        Explore, invest, and experience culture — all in one platform built for visitors like you.
-      </motion.p>
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden pt-24 md:pt-16">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%23FFFFFF%22%20fill-opacity=%221%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            <span className="bg-gradient-to-r from-blue-400 to-yellow-400 bg-clip-text text-transparent">
+              Welcome to Roxas City
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-xl md:text-2xl text-slate-200 mb-8 max-w-4xl mx-auto leading-relaxed min-h-[3.5rem]"
+            aria-label="Explore, invest, and experience culture — all in one platform built for visitors like you."
+          >
+            {typewriterText}
+          </motion.p>
+        </div>
+      </div>
     </section>
   );
 }

@@ -322,7 +322,7 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
               <select
                 value={userType}
                 onChange={(e) => setUserType(e.target.value as any)}
-                className="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white font-figtree"
+                className="text-sm border border-gray-300 rounded-full px-3 py-1 bg-gradient-to-b from-amber-100 to-yellow-50 font-figtree shadow-sm hover:shadow-md transition-all duration-200"
               >
                 <option value="resident">Resident</option>
                 <option value="visitor">Visitor</option>
@@ -350,7 +350,7 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                 <select
                   value={userType}
                   onChange={(e) => setUserType(e.target.value as any)}
-                  className="text-sm border border-gray-300 rounded-md px-2 py-1 font-figtree"
+                  className="text-sm border border-gray-300 rounded-full px-3 py-1 bg-gradient-to-b from-amber-100 to-yellow-50 font-figtree shadow-sm"
                 >
                   <option value="resident">Resident</option>
                   <option value="visitor">Visitor</option>

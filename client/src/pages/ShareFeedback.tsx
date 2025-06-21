@@ -14,10 +14,25 @@ export default function ShareFeedbackPage() {
         <div className="py-12 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-slate-800 mb-4">Share Your Feedback</h1>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Your voice matters. Participate in city decisions, submit feedback, and help shape Roxas City's future.
+              <h1 className="text-4xl font-bold text-slate-800 mb-4">Make Your Voice Heard</h1>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                Democracy works best when citizens actively participate. Join discussions, 
+                provide feedback on city projects, and help shape Roxas City's future.
               </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto text-left">
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                  <h3 className="font-semibold text-slate-800 mb-2">Submit suggestions and concerns</h3>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                  <h3 className="font-semibold text-slate-800 mb-2">Participate in public consultations</h3>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                  <h3 className="font-semibold text-slate-800 mb-2">Attend virtual town halls</h3>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                  <h3 className="font-semibold text-slate-800 mb-2">Track project progress</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>

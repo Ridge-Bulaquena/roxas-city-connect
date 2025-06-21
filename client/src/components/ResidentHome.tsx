@@ -1,5 +1,4 @@
-
-import { HeroSection } from "@/components/HeroSection";
+import { HeroSlider } from "@/components/HeroSlider";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { ComplaintSystem } from "@/components/ComplaintSystem";
 import { LiveDashboards } from "@/components/LiveDashboards";
@@ -15,13 +14,13 @@ interface ResidentHomeProps {
 export default function ResidentHome({ userType, hasVoted }: ResidentHomeProps) {
   return (
     <>
-      <HeroSection userType={userType} hasVoted={hasVoted} />
+      <HeroSlider />
       <ServicesGrid />
       <ComplaintSystem />
       <LiveDashboards userType={userType} />
       <DigitalParticipation hasVoted={hasVoted} />
       <OpenDataSpotlight />
-      <TourismFeed userType={userType} />
+      <TourismFeed />
     </>
   );
 }

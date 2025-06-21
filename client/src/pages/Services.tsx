@@ -97,21 +97,21 @@ const Services = () => {
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              <div className="text-center p-6 bg-white rounded-xl shadow-sm border">
-                <Building className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Apply for permits and licenses</h3>
+              <div className="text-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl shadow-sm border border-[#28D7DB]/20">
+                <Building className="w-12 h-12 text-[#28D7DB] mx-auto mb-4" />
+                <h3 className="font-semibold text-[#E3F6FF] mb-2">Apply for permits and licenses</h3>
               </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-sm border">
-                <FileText className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Request civil registry documents</h3>
+              <div className="text-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl shadow-sm border border-[#28D7DB]/20">
+                <FileText className="w-12 h-12 text-[#28D7DB] mx-auto mb-4" />
+                <h3 className="font-semibold text-[#E3F6FF] mb-2">Request civil registry documents</h3>
               </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-sm border">
-                <CreditCard className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Pay taxes and fees online</h3>
+              <div className="text-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl shadow-sm border border-[#28D7DB]/20">
+                <CreditCard className="w-12 h-12 text-[#28D7DB] mx-auto mb-4" />
+                <h3 className="font-semibold text-[#E3F6FF] mb-2">Pay taxes and fees online</h3>
               </div>
-              <div className="text-center p-6 bg-white rounded-xl shadow-sm border">
-                <Clock className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Track your application status</h3>
+              <div className="text-center p-6 bg-[#1C2E4A]/60 backdrop-blur-sm rounded-xl shadow-sm border border-[#28D7DB]/20">
+                <Clock className="w-12 h-12 text-[#28D7DB] mx-auto mb-4" />
+                <h3 className="font-semibold text-[#E3F6FF] mb-2">Track your application status</h3>
               </div>
             </div>
           </div>

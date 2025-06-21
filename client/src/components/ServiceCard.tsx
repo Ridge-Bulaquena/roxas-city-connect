@@ -66,7 +66,7 @@ export function ServiceCard({
       <div className="w-full px-4 pb-6 flex flex-col items-center">
         <div className="relative w-full flex justify-center items-center">
           <motion.button
-            className="btn-primary ripple elastic-button"
+            className="btn-primary ripple elastic-button bg-gradient-to-b from-amber-100 to-yellow-50 hover:from-amber-200 hover:to-yellow-100 border border-yellow-200 text-yellow-800"
             tabIndex={0}
             onClick={onClick}
             aria-label={cta}

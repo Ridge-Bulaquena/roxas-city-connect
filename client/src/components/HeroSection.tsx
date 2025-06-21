@@ -74,7 +74,7 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
           {/* Badge */}
           <Badge 
             variant="secondary" 
-            className="mb-6 px-4 py-2 text-sm font-medium bg-yellow-100 text-yellow-800 border-yellow-200 animate-fade-in"
+            className="mb-6 px-4 py-2 text-sm font-medium bg-gradient-to-b from-amber-100 to-yellow-50 text-yellow-800 border-yellow-200 animate-fade-in shadow-sm"
           >
             {content.badge}
           </Badge>

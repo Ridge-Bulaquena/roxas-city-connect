@@ -524,13 +524,21 @@ html {
 }
 
 .btn-primary {
-  @apply bg-[var(--civic-accent)] text-white px-6 py-2 relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200;
+  @apply px-6 py-2 relative overflow-hidden font-inter shadow focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-200;
+  background: linear-gradient(to bottom, #fef3c7, #fefce8);
+  color: #92400e;
+  border: 1px solid #fde68a;
   border-radius: 100px !important;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #fde68a, #fef3c7);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
 }
 .btn-primary .shine {
   position: absolute;
@@ -585,8 +593,9 @@ html {
 }
 
 .btn-visitor {
-  background: #22344D;
-  color: #fff;
+  background: linear-gradient(to bottom, #fef3c7, #fefce8);
+  color: #92400e;
+  border: 1px solid #fde68a;
   border-radius: 100px;
   padding: 0.75rem 2rem;
   font-family: 'Inter', sans-serif;
@@ -594,16 +603,15 @@ html {
   font-size: 1.1rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(34,52,77,0.08);
-  border: 1px solid #2E3E56;
-  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .btn-visitor:hover, .btn-visitor:focus {
-  background: #2d4266;
-  box-shadow: 0 4px 16px rgba(56,225,255,0.10);
+  background: linear-gradient(to bottom, #fde68a, #fef3c7);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);
 }
 .btn-visitor .shine {
   position: absolute;

@@ -106,13 +106,13 @@ export default function VisitorHome() {
           From cultural calendars to booking tools — we make it easy.
         </p>
         <div className="flex justify-center gap-6 md:gap-4 flex-wrap px-8 md:px-0">
-          <Button asChild className="btn-visitor">
+          <Button asChild className="btn-visitor bg-gradient-to-b from-amber-100 to-yellow-50 hover:from-amber-200 hover:to-yellow-100 text-yellow-800 border border-yellow-200">
             <a href="/tourism-culture/showcase/community">
               Connect with Locals
               <span className="shine" />
             </a>
           </Button>
-          <Button asChild className="btn-visitor">
+          <Button asChild className="btn-visitor bg-gradient-to-b from-amber-100 to-yellow-50 hover:from-amber-200 hover:to-yellow-100 text-yellow-800 border border-yellow-200">
             <a href="/tourism-culture/showcase/attractions">
               Explore the Map
               <span className="shine" />

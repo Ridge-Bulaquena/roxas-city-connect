@@ -23,11 +23,11 @@ export default function MarqueeBanner() {
         animate={{ x: ["0%", "-100%"] }}
         transition={{
           repeat: Infinity,
-          duration: 1900, // Ultra slow, all 12 headlines visible before restart
+          duration: 3900, // Ultra slow, all 12 headlines visible before restart
           ease: "linear",
         }}
       >
-        {Array(15).fill(headlines).flat().map((headline, index) => (
+        {Array(25).fill(headlines).flat().map((headline, index) => (
           <span key={index} className="inline-block px-16 text-sm font-semibold text-gray-800">
             {headline}
           </span>

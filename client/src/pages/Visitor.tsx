@@ -9,7 +9,7 @@ export default function VisitorPage() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation userType={userType} setUserType={setUserType} />
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         <VisitorHome />
       </main>
       <Footer />

@@ -10,7 +10,7 @@ export default function ShareFeedbackPage() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation userType={userType} setUserType={setUserType} />
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         <div className="py-12 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">

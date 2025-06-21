@@ -8,7 +8,7 @@ import { IconCard } from "@/components/ui/visitor/IconCard";
 // Simple HeroSlider placeholder
 function HeroSlider() {
   return (
-    <section className="bg-[#0B1523] text-white py-20 px-6 text-center">
+    <section className="bg-[#0B1523] text-white py-20 px-6 text-center pt-20">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}

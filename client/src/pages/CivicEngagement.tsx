@@ -114,21 +114,21 @@ const CivicEngagement = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#0E1A2A] via-[#0B132B] to-[#1C2E4A]">
         {/* Hero Section */}
         <section className="relative py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <Badge className="mb-6 px-4 py-2 bg-purple-100 text-purple-800 border-purple-200">
+            <Badge className="mb-6 px-4 py-2 bg-[#28D7DB]/20 text-[#28D7DB] border-[#28D7DB]/30">
               Civic Engagement
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#E3F6FF] mb-6">
+              <span className="bg-gradient-to-r from-[#28D7DB] via-[#00E5FF] to-white bg-clip-text text-transparent">
                 Make Your Voice Heard
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#93A3B5] mb-8 max-w-4xl mx-auto leading-relaxed">
               Democracy works best when citizens actively participate. Join discussions, 
               provide feedback on city projects, and help shape Roxas City's future.
             </p>

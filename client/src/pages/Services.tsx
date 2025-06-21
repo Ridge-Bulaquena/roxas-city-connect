@@ -53,41 +53,41 @@ const Services = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#0E1A2A] via-[#0B132B] to-[#1C2E4A]">
         {/* Hero Section */}
         <section className="relative py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <Badge className="mb-6 px-4 py-2 bg-blue-100 text-blue-800 border-blue-200">
+            <Badge className="mb-6 px-4 py-2 bg-[#28D7DB]/20 text-[#28D7DB] border-[#28D7DB]/30">
               Digital Services
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-yellow-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#E3F6FF] mb-6">
+              <span className="bg-gradient-to-r from-[#28D7DB] via-[#00E5FF] to-white bg-clip-text text-transparent">
                 City Services at Your Fingertips
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#93A3B5] mb-8 max-w-4xl mx-auto leading-relaxed">
               From business permits to civil documents, access essential city services online 24/7. 
               Our digital platform makes government services faster, easier, and more transparent.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">24/7</div>
-                <div className="text-gray-600">Available</div>
+                <div className="text-2xl font-bold text-[#28D7DB]">24/7</div>
+                <div className="text-[#93A3B5]">Available</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">100%</div>
-                <div className="text-gray-600">Digital</div>
+                <div className="text-2xl font-bold text-[#28D7DB]">100%</div>
+                <div className="text-[#93A3B5]">Digital</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-600">Fast</div>
-                <div className="text-gray-600">Processing</div>
+                <div className="text-2xl font-bold text-[#28D7DB]">Fast</div>
+                <div className="text-[#93A3B5]">Processing</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">Secure</div>
-                <div className="text-gray-600">Platform</div>
+                <div className="text-2xl font-bold text-[#28D7DB]">Secure</div>
+                <div className="text-[#93A3B5]">Platform</div>
               </div>
             </div>
           </div>

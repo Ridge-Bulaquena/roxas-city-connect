@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Slide {
   title: string;
@@ -8,6 +9,8 @@ interface Slide {
   description?: string;
   cta1?: string;
   cta2?: string;
+  cta1Route?: string;
+  cta2Route?: string;
 }
 
 const slides: Slide[] = [
@@ -16,7 +19,9 @@ const slides: Slide[] = [
     subtitle: "Your City, Your Voice, Your Future",
     description: "Roxas City Connect empowers every citizen to participate in building our community. Access city services, share your ideas, and stay connected with your local government.",
     cta1: "Get Started",
-    cta2: "City Services / Share Feedback"
+    cta2: "City Services / Share Feedback",
+    cta1Route: "/services",
+    cta2Route: "/share-feedback"
   },
   {
     title: "Your City, Your Voice.",
@@ -150,85 +155,97 @@ const ParallaxBackground = ({ slideIndex }: { slideIndex: number }) => (
   </div>
 );
 
-const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) => (
-  <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-    <AnimatePresence mode="wait">
-      {isActive && (
-        <motion.div
-          key={slide.title}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
-          {/* Title */}
-          <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-tight"
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-yellow-500 bg-clip-text text-transparent">
-              {slide.title}
-            </span>
-          </motion.h1>
+const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) => {
+  const navigate = useNavigate();
 
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-gray-600 font-medium max-w-3xl mx-auto"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {slide.subtitle}
-          </motion.p>
+  const handleCtaClick = (route?: string) => {
+    if (route) {
+      navigate(route);
+    }
+  };
 
-          {/* Description */}
-          {slide.description && (
+  return (
+    <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <AnimatePresence mode="wait">
+        {isActive && (
+          <motion.div
+            key={slide.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-8"
+          >
+            {/* Title */}
+            <motion.h1
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-tight"
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-yellow-500 bg-clip-text text-transparent">
+                {slide.title}
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
             <motion.p
-              className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-xl md:text-2xl lg:text-3xl text-gray-600 font-medium max-w-3xl mx-auto"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {slide.description}
+              {slide.subtitle}
             </motion.p>
-          )}
 
-          {/* CTAs */}
-          {(slide.cta1 || slide.cta2) && (
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              {slide.cta1 && (
-                <motion.button
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {slide.cta1}
-                </motion.button>
-              )}
-              {slide.cta2 && (
-                <motion.button
-                  className="px-8 py-4 bg-white text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {slide.cta2}
-                </motion.button>
-              )}
-            </motion.div>
-          )}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-);
+            {/* Description */}
+            {slide.description && (
+              <motion.p
+                className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                {slide.description}
+              </motion.p>
+            )}
+
+            {/* CTAs */}
+            {(slide.cta1 || slide.cta2) && (
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                {slide.cta1 && (
+                  <motion.button
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleCtaClick(slide.cta1Route)}
+                  >
+                    {slide.cta1}
+                  </motion.button>
+                )}
+                {slide.cta2 && (
+                  <motion.button
+                    className="px-8 py-4 bg-white text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleCtaClick(slide.cta2Route)}
+                  >
+                    {slide.cta2}
+                  </motion.button>
+                )}
+              </motion.div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

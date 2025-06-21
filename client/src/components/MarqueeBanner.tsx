@@ -56,6 +56,17 @@ const headlines = [
 export default function MarqueeBanner() {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
+  const [currentHeadlines, setCurrentHeadlines] = useState<typeof headlines>([]);
+
+  // Fisher-Yates shuffle function
+  const shuffleArray = (array: any[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -66,6 +77,24 @@ export default function MarqueeBanner() {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Initialize and shuffle headlines every 2 seconds
+  useEffect(() => {
+    const getRandomHeadlines = () => {
+      const shuffled = shuffleArray(headlines);
+      return shuffled.slice(0, 3);
+    };
+
+    // Set initial headlines
+    setCurrentHeadlines(getRandomHeadlines());
+
+    // Shuffle every 2 seconds
+    const interval = setInterval(() => {
+      setCurrentHeadlines(getRandomHeadlines());
+    }, 2000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleClick = (link: string) => {
@@ -81,15 +110,16 @@ export default function MarqueeBanner() {
         }}
         transition={{
           repeat: Infinity,
-          duration: isMobile ? headlines.length * 2.5 : headlines.length * 0.75, // Slower on mobile to show all news
+          duration: isMobile ? 12 : 8, // Fixed duration for 3 headlines
           ease: "linear",
         }}
+        key={currentHeadlines.map(h => h.text).join('')} // Force re-animation when headlines change
       >
-        {/* Render headlines twice for seamless scroll */}
+        {/* Render current 3 headlines twice for seamless scroll */}
         <div className="flex-shrink-0">
-          {headlines.map((headline, index) => (
+          {currentHeadlines.map((headline, index) => (
             <motion.button
-              key={index}
+              key={`${index}-${headline.text}`}
               className="inline-block px-16 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer"
               onClick={() => handleClick(headline.link)}
               whileHover={{ scale: 1.05 }}
@@ -100,9 +130,9 @@ export default function MarqueeBanner() {
           ))}
         </div>
         <div className="flex-shrink-0">
-          {headlines.map((headline, index) => (
+          {currentHeadlines.map((headline, index) => (
             <motion.button
-              key={`duplicate-${index}`}
+              key={`duplicate-${index}-${headline.text}`}
               className="inline-block px-16 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors cursor-pointer"
               onClick={() => handleClick(headline.link)}
               whileHover={{ scale: 1.05 }}

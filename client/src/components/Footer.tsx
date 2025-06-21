@@ -133,11 +133,11 @@ export const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-700/30 bg-gradient-to-r from-slate-900/80 to-blue-900/80">
         <div className="max-w-7xl mx-auto nav-spacing">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-spacing">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-spacing h-full">
             <div className="text-sm text-muted text-center sm:text-left">
               © 2024 Roxas City Government. All rights reserved.
             </div>
-            <div className="flex items-center justify-center space-x-2 text-sm text-muted">
+            <div className="flex items-center justify-center space-x-2 text-sm text-muted h-full items-center">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" />
               <span>for the people of Roxas City</span>

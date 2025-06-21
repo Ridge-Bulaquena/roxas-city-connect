@@ -51,8 +51,9 @@ export const Footer = () => {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Services', href: '/services' },
-                { name: 'Visitor Info', href: '/visitor' },
                 { name: 'Feedback', href: '/share-feedback' },
+                { name: 'Visitor Portal', href: '/visitor' },
+                { name: 'City Official Portal', href: '/admin' },
               ].map((link) => (
                 <li key={link.name}>
                   <a href={link.href} className="text-slate-600 hover:text-slate-900 hover:underline underline-offset-2 transition-colors">

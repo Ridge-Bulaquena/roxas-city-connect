@@ -14,7 +14,7 @@ import { CivicFooterBar } from "./CivicFooterBar";
 
 export const Footer = () => {
   return (
-    <footer className="section-dark text-white">
+    <footer className="bg-gray-100 text-gray-900">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto footer-spacing">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-mobile text-center sm:text-left">
@@ -26,20 +26,20 @@ export const Footer = () => {
               </div>
               <div className="text-center sm:text-left">
                 <h3 className="font-bold text-xl">Roxas City</h3>
-                <p className="text-content text-sm">Citizen Platform</p>
+                <p className="text-gray-600 text-sm">Citizen Platform</p>
               </div>
             </div>
-            <p className="text-muted leading-relaxed text-center sm:text-left max-w-sm">
+            <p className="text-gray-600 leading-relaxed text-center sm:text-left max-w-sm">
               Empowering citizens, councilors, and visitors through data-driven engagement and transparent governance.
             </p>
             <div className="flex justify-center sm:justify-start space-x-4 sm:space-x-3">
-              <Button size="sm" variant="outline" className="btn-dark-secondary w-10 h-10 p-0">
+              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
                 <Facebook className="w-4 h-4" />
               </Button>
-              <Button size="sm" variant="outline" className="btn-dark-secondary w-10 h-10 p-0">
+              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
                 <Twitter className="w-4 h-4" />
               </Button>
-              <Button size="sm" variant="outline" className="btn-dark-secondary w-10 h-10 p-0">
+              <Button size="sm" variant="outline" className="w-10 h-10 p-0 border-gray-300 hover:bg-gray-200">
                 <Instagram className="w-4 h-4" />
               </Button>
             </div>
@@ -47,10 +47,10 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-content">Quick Links</h4>
+            <h4 className="font-semibold text-lg text-gray-900">Quick Links</h4>
             <ul className="text-spacing">
               <li>
-                <a href="/visitor" className="text-muted hover:text-content transition-colors text-sm font-semibold block py-1">
+                <a href="/visitor" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-semibold block py-1">
                   Visitor Portal
                 </a>
               </li>
@@ -63,7 +63,7 @@ export const Footer = () => {
                 'Open Data Portal'
               ].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-muted hover:text-content transition-colors text-sm block py-1">
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors text-sm block py-1">
                     {link}
                   </a>
                 </li>
@@ -73,43 +73,43 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-content">Contact Us</h4>
+            <h4 className="font-semibold text-lg text-gray-900">Contact Us</h4>
             <ul className="text-spacing">
               <li className="flex items-start justify-center sm:justify-start space-x-3">
-                <MapPin className="w-5 h-5 mt-1 accent-highlight flex-shrink-0" />
-                <div className="text-sm text-muted text-center sm:text-left">
+                <MapPin className="w-5 h-5 mt-1 text-blue-600 flex-shrink-0" />
+                <div className="text-sm text-gray-600 text-center sm:text-left">
                   <div className="font-medium">Roxas City Hall</div>
                   <div>Roxas City, Capiz 5800</div>
                 </div>
               </li>
               <li className="flex items-center justify-center sm:justify-start space-x-3">
-                <Phone className="w-5 h-5 accent-highlight flex-shrink-0" />
-                <span className="text-sm text-muted">(036) 621-0153</span>
+                <Phone className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <span className="text-sm text-gray-600">(036) 621-0153</span>
               </li>
               <li className="flex items-center justify-center sm:justify-start space-x-3">
-                <Mail className="w-5 h-5 accent-highlight flex-shrink-0" />
-                <span className="text-sm text-muted">info@roxascity.gov.ph</span>
+                <Mail className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <span className="text-sm text-gray-600">info@roxascity.gov.ph</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-content">Stay Updated</h4>
-            <p className="text-muted text-sm leading-relaxed max-w-sm mx-auto sm:mx-0 text-center sm:text-left">
+            <h4 className="font-semibold text-lg text-gray-900">Stay Updated</h4>
+            <p className="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto sm:mx-0 text-center sm:text-left">
               Get the latest news about city services, events, and government updates.
             </p>
             <div className="form-spacing">
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2">
                 <Input 
                   placeholder="Your email address"
-                  className="flex-1 bg-gray-800/50 border-gray-600 text-content placeholder-gray-400 rounded-full px-4 py-3"
+                  className="flex-1 bg-white border-gray-300 text-gray-900 placeholder-gray-500 rounded-full px-4 py-3"
                 />
-                <Button size="sm" className="btn-dark-primary rounded-full px-6 py-3 self-center sm:self-auto">
+                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-3 self-center sm:self-auto">
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
-              <p className="text-xs text-muted text-center sm:text-left mt-3">
+              <p className="text-xs text-gray-500 text-center sm:text-left mt-3">
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </div>

@@ -34,9 +34,9 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
   }, []);
 
   return (
-    <section className="py-20 section-dark">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+    <section className="py-24 md:py-20 section-dark">
+      <div className="max-w-7xl mx-auto px-8 md:px-4">
+        <div className="text-center mb-20 md:mb-16">
           <h2 className="text-4xl font-bold mb-4 text-content">
             Shape Your City's Future
           </h2>
@@ -45,7 +45,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
           {/* Participatory Budgeting */}
           <Card 
             data-index="0"
@@ -129,7 +129,7 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
         </div>
 
         {/* Participation Stats */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="mt-20 md:mt-16 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           {[
             { value: "12,845", label: "Total Votes Cast" },
             { value: "89.2%", label: "Participation Rate" },

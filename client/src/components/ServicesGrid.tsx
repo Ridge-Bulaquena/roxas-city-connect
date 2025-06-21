@@ -106,15 +106,15 @@ export const ServicesGrid = () => {
 
   return (
     <motion.section
-      className="py-20 bg-slate-50"
+      className="py-24 md:py-20 bg-slate-50"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       onViewportEnter={handleViewportEnter}
       ref={sectionRef}
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto px-8 md:px-4">
+        <div className="text-center mb-20 md:mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4" style={{ minHeight: '3.5rem' }}>
             {displayedText.split('\n')[0]}
           </h2>
@@ -123,7 +123,7 @@ export const ServicesGrid = () => {
           </p>
         </div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-6"
           variants={{
             hidden: {},
             visible: {

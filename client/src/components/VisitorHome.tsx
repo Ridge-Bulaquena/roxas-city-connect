@@ -27,7 +27,7 @@ function HeroSlider() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%23FFFFFF%22%20fill-opacity=%221%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-6 text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
@@ -61,7 +61,7 @@ export default function VisitorHome() {
 
       {/* DARK SECTION: Visitor Types */}
       <section className="bg-[#0B1523] py-20 text-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 md:gap-6 px-8 md:px-6">
           <VisitorCard
             title="🌴 Tourist"
             subtitle="Discover & Explore"
@@ -92,7 +92,7 @@ export default function VisitorHome() {
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
           Beaches, seafood, culture, and community — a true gem of Western Visayas.
         </p>
-        <div className="mt-10 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="mt-12 md:mt-10 grid md:grid-cols-3 gap-10 md:gap-6 max-w-6xl mx-auto px-8 md:px-0">
           <IconCard icon="🌊" title="Unspoiled Beaches" desc="White sands, clear water, and peaceful coastlines." />
           <IconCard icon="🍤" title="Seafood Capital" desc="Fresh talaba, crabs, and shrimp, caught daily." />
           <IconCard icon="🎉" title="Festival Culture" desc="Experience the vibrant 'Sinadya sa Halaran'." />
@@ -105,7 +105,7 @@ export default function VisitorHome() {
         <p className="text-[#9AAEC4] max-w-lg mx-auto mb-8">
           From cultural calendars to booking tools — we make it easy.
         </p>
-        <div className="flex justify-center gap-4 flex-wrap">
+        <div className="flex justify-center gap-6 md:gap-4 flex-wrap px-8 md:px-0">
           <Button asChild className="btn-visitor">
             <a href="/tourism-culture/showcase/community">
               Connect with Locals

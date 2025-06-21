@@ -78,7 +78,7 @@ export default function NewsArticlePage() {
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navigation userType={userType} setUserType={setUserType} />
       <main className="flex-1 pt-24 md:pt-16">
-        <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto px-8 md:px-4 py-16 md:py-12">
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

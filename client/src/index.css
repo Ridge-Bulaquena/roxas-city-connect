@@ -129,6 +129,13 @@
   .section-dark {
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     position: relative;
+    padding: 5rem 0; /* More vertical padding for sections */
+  }
+
+  @media (max-width: 768px) {
+    .section-dark {
+      padding: 4rem 0;
+    }
   }
 
   .section-dark h2 {

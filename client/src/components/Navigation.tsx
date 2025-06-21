@@ -235,7 +235,7 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
         ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
         : 'bg-white/90 backdrop-blur-sm'
     }`}>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6 md:px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div 

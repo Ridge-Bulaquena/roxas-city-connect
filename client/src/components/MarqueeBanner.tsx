@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const headlines = [
   {
@@ -54,6 +55,18 @@ const headlines = [
 
 export default function MarqueeBanner() {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleClick = (link: string) => {
     navigate(link);
@@ -68,7 +81,7 @@ export default function MarqueeBanner() {
         }}
         transition={{
           repeat: Infinity,
-          duration: headlines.length * 0.75, // Twice as fast
+          duration: isMobile ? headlines.length * 2.5 : headlines.length * 0.75, // Slower on mobile to show all news
           ease: "linear",
         }}
       >

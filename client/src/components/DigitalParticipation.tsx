@@ -3,6 +3,7 @@ import { Vote, MessageSquare, Users, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface DigitalParticipationProps {
   hasVoted: boolean;
@@ -63,12 +64,14 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button 
-                className={`elastic-button ${hasVoted ? "bg-slate-600 hover:bg-slate-700 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-slate-900"}`}
-                disabled={hasVoted}
-              >
-                {hasVoted ? "View Results" : "Cast Your Vote"}
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  className={`elastic-button ripple ${hasVoted ? "bg-slate-600 hover:bg-slate-700 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-slate-900"}`}
+                  disabled={hasVoted}
+                >
+                  {hasVoted ? "View Results" : "Cast Your Vote"}
+                </Button>
+              </motion.div>
             </CardContent>
           </Card>
 
@@ -90,9 +93,11 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white elastic-button">
-                Join Discussion
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white elastic-button ripple">
+                  Join Discussion
+                </Button>
+              </motion.div>
             </CardContent>
           </Card>
 
@@ -114,9 +119,11 @@ export const DigitalParticipation = ({ hasVoted }: DigitalParticipationProps) =>
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button className="bg-slate-600 hover:bg-slate-700 text-white elastic-button">
-                Take Survey
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-slate-600 hover:bg-slate-700 text-white elastic-button ripple">
+                  Take Survey
+                </Button>
+              </motion.div>
             </CardContent>
           </Card>
         </div>

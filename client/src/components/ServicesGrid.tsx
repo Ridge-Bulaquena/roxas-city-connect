@@ -128,7 +128,8 @@ export const ServicesGrid = () => {
             hidden: {},
             visible: {
               transition: {
-                staggerChildren: 0.09,
+                staggerChildren: 0.12,
+                delayChildren: 0.2,
               },
             },
           }}
@@ -136,14 +137,30 @@ export const ServicesGrid = () => {
           animate="visible"
         >
           {SERVICES.map((service, idx) => (
-            <ServiceCard
+            <motion.div
               key={service.title}
-              icon={service.icon as any}
-              title={service.title}
-              description={service.description}
-              cta={service.cta}
-              onClick={() => window.location.href = service.route}
-            />
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.9 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                  }
+                },
+              }}
+            >
+              <ServiceCard
+                icon={service.icon as any}
+                title={service.title}
+                description={service.description}
+                cta={service.cta}
+                onClick={() => window.location.href = service.route}
+              />
+            </motion.div>
           ))}
         </motion.div>
       </div>

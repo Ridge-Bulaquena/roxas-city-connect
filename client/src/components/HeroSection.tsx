@@ -105,33 +105,45 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
           {/* CTA Buttons */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
-              >
-                {content.cta}
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group ripple pulse-glow"
+                >
+                  {content.cta}
+                  <motion.div
+                    className="ml-2 inline-block"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+                  </motion.div>
+                </Button>
+              </motion.div>
               
               {userType === 'resident' && (
                 <>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => navigate('/city-services')}
-                  >
-                    City Services
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ripple"
+                      onClick={() => navigate('/city-services')}
+                    >
+                      City Services
+                    </Button>
+                  </motion.div>
                   
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => navigate('/share-feedback')}
-                  >
-                    Share Feedback
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                    <Button 
+                      size="lg" 
+                      variant="outline"
+                      className="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ripple"
+                      onClick={() => navigate('/share-feedback')}
+                    >
+                      Share Feedback
+                    </Button>
+                  </motion.div>
                 </>
               )}
             </div>
@@ -139,21 +151,62 @@ export const HeroSection = ({ userType, hasVoted }: HeroSectionProps) => {
 
           {/* Stats */}
           <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-              <Users className="w-8 h-8 text-blue-600 mb-3" />
-              <div className="text-2xl font-bold text-gray-900">156,435</div>
+            <motion.div 
+              className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 card-hover cursor-pointer"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <motion.div whileHover={{ scale: 1.2, rotate: 10 }}>
+                <Users className="w-8 h-8 text-blue-600 mb-3" />
+              </motion.div>
+              <motion.div 
+                className="text-2xl font-bold text-gray-900"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+              >
+                156,435
+              </motion.div>
               <div className="text-gray-600">Active Citizens</div>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-              <BarChart3 className="w-8 h-8 text-yellow-500 mb-3" />
-              <div className="text-2xl font-bold text-gray-900">₱2.1B</div>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 card-hover cursor-pointer"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <motion.div whileHover={{ scale: 1.2, rotate: -10 }}>
+                <BarChart3 className="w-8 h-8 text-yellow-500 mb-3" />
+              </motion.div>
+              <motion.div 
+                className="text-2xl font-bold text-gray-900"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.0, type: "spring", stiffness: 200 }}
+              >
+                ₱2.1B
+              </motion.div>
               <div className="text-gray-600">City Budget</div>
-            </div>
-            <div className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-              <Heart className="w-8 h-8 text-red-500 mb-3" />
-              <div className="text-2xl font-bold text-gray-900">98.2%</div>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-col items-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 card-hover cursor-pointer"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <motion.div whileHover={{ scale: 1.2, rotate: 15 }}>
+                <Heart className="w-8 h-8 text-red-500 mb-3" />
+              </motion.div>
+              <motion.div 
+                className="text-2xl font-bold text-gray-900"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
+              >
+                98.2%
+              </motion.div>
               <div className="text-gray-600">Satisfaction Rate</div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

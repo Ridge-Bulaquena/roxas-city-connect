@@ -93,6 +93,11 @@
 }
 
 @layer utilities {
+  .bg-blue-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 245 255 / 85%);
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }

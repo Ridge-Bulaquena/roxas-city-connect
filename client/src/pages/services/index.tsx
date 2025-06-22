@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Navigation } from '@/components/Navigation';
@@ -53,6 +53,27 @@ const cardVariants = {
     },
 };
 
+const TypewriterText = ({ text, delay = 50 }: { text: string; delay?: number }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, delay);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, delay]);
+
+  return (
+    <span className="text-slate-400 font-figtree font-light">
+      {displayText}
+    </span>
+  );
+};
+
 const ServicesIndexPage = () => {
   const { userType, setUserType } = usePersonalization();
 
@@ -78,6 +99,19 @@ const ServicesIndexPage = () => {
               >
                   Access health, education, permits, and more — faster, simpler.
               </motion.p>
+              <motion.div
+                  className="mt-6 max-w-4xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                  <p className="text-xs leading-relaxed">
+                      <TypewriterText 
+                          text="Roxas City Connect transforms public service into a digital, participatory experience — delivering government services directly into every home, empowering citizen researchers, and enabling responsive governance in real time."
+                          delay={30}
+                      />
+                  </p>
+              </motion.div>
           </div>
 
           <motion.div 

@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { MapPin, Syringe, MessageCircle, BarChart3, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ServiceCard } from "@/components/health/service-card";
+import { ServiceCard } from "../components/health/service-card";
 
 export default function Home() {
   const handleEmergencyContact = () => {

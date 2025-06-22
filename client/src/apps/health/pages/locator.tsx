@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ClinicCard } from "@/components/health/clinic-card";
 import { useQuery } from "@tanstack/react-query";
 import { Clinic } from "@/types/health";
 
@@ -114,12 +113,14 @@ export default function ClinicLocator() {
             {/* Clinic Results List */}
             <div className="space-y-4">
               {filteredClinics.map((clinic) => (
-                <ClinicCard
-                  key={clinic.id}
-                  clinic={clinic}
-                  onSelect={handleClinicSelect}
-                  onGetDirections={handleGetDirections}
-                />
+                <div key={clinic.id} className="p-4 bg-white border rounded shadow">
+                  <div className="font-bold text-blue-900">{clinic.name}</div>
+                  <div className="text-sm text-gray-600">{clinic.address}</div>
+                  <div className="text-xs text-gray-500">{clinic.phone}</div>
+                  <button className="mt-2 text-blue-600 underline" onClick={() => handleGetDirections(clinic)}>
+                    Get Directions
+                  </button>
+                </div>
               ))}
               
               {filteredClinics.length === 0 && !isLoading && (

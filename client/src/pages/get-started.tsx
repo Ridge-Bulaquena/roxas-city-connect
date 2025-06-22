@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Header, Footer, Button, Card, Section } from '@roxas/ui';
+import { Layout, Header, Footer, Button, Card, Section } from '../components/ui';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 

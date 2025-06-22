@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Layout } from '@/components/Layout';
+import { Navigation } from '@/components/Navigation';
+import { Footer } from '@/components/Footer';
+import { usePersonalization } from '@/hooks/usePersonalization';
 import { 
   Stethoscope, GraduationCap, Handshake, Landmark, Construction, Leaf, 
   Wheat, ShieldCheck, BarChart, Globe, Briefcase, Compass 
@@ -52,67 +54,73 @@ const cardVariants = {
 };
 
 const ServicesIndexPage = () => {
-  return (
-    <Layout>
-      <div className="w-full py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center">
-            <motion.h1 
-                className="text-5xl md:text-6xl font-light text-slate-800"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                Explore City Services
-            </motion.h1>
-            <motion.p 
-                className="mt-4 text-xl text-slate-500"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                Access health, education, permits, and more — faster, simpler.
-            </motion.p>
-        </div>
+  const { userType, setUserType } = usePersonalization();
 
-        <motion.div 
-            className="mt-20 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-          {SERVICES.map((service) => (
-            <Link key={service.slug} to={`/services/${service.slug}`}>
-              <motion.div
-                className="group p-4 rounded-3xl cursor-pointer text-center"
-                style={{
-                  backgroundColor: colors.base,
-                  boxShadow: `8px 8px 16px ${colors.shadow}, -8px -8px 16px #ffffff`,
-                }}
-                variants={cardVariants}
-                whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: '#e6ecf2'
-                }}
-                transition={{ type: 'spring', stiffness: 300 }}
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <Navigation userType={userType} setUserType={setUserType} />
+      <main className="flex-1 pt-16">
+        <div className="w-full py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto text-center">
+              <motion.h1 
+                  className="text-5xl md:text-6xl font-light text-slate-800"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
               >
-                  <div className="flex justify-center items-center mb-3">
-                      <service.icon 
-                        className="w-7 h-7" 
-                        style={{ color: colors.text }}
-                      />
-                  </div>
-                  <h3 
-                    className="font-medium text-sm"
-                    style={{ color: colors.text }}
-                  >
-                    {service.title}
-                  </h3>
-              </motion.div>
-            </Link>
-          ))}
-        </motion.div>
-      </div>
-    </Layout>
+                  Explore City Services
+              </motion.h1>
+              <motion.p 
+                  className="mt-4 text-xl text-slate-500"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                  Access health, education, permits, and more — faster, simpler.
+              </motion.p>
+          </div>
+
+          <motion.div 
+              className="mt-20 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+          >
+            {SERVICES.map((service) => (
+              <Link key={service.slug} to={`/services/${service.slug}`}>
+                <motion.div
+                  className="group p-4 rounded-3xl cursor-pointer text-center"
+                  style={{
+                    backgroundColor: colors.base,
+                    boxShadow: `8px 8px 16px ${colors.shadow}, -8px -8px 16px #ffffff`,
+                  }}
+                  variants={cardVariants}
+                  whileHover={{ 
+                      scale: 1.05,
+                      backgroundColor: '#e6ecf2'
+                  }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                    <div className="flex justify-center items-center mb-3">
+                        <service.icon 
+                          className="w-7 h-7" 
+                          style={{ color: colors.text }}
+                        />
+                    </div>
+                    <h3 
+                      className="font-medium text-sm"
+                      style={{ color: colors.text }}
+                    >
+                      {service.title}
+                    </h3>
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 };
 

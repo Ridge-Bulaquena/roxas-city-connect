@@ -13,14 +13,14 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.5,
       delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -30,6 +30,18 @@ const itemVariants = {
       damping: 15,
     },
   },
+};
+
+// Elastic underline animation for links
+const linkVariants = {
+  hover: {
+    scale: 1.02,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10,
+    }
+  }
 };
 
 export const Footer = () => {
@@ -50,7 +62,7 @@ export const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <motion.div 
                 className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center"
-                whileHover={{ scale: 1.05, rotate: 5 }}
+                whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <span className="font-bold text-white text-xl font-inter">RC</span>
@@ -97,9 +109,20 @@ export const Footer = () => {
                 { name: 'City Official Portal', href: '/admin' },
               ].map((link, index) => (
                 <motion.li key={link.name} variants={itemVariants}>
-                  <a href={link.href} className="text-slate-600 hover:text-slate-900 hover:underline underline-offset-2 transition-colors font-figtree font-light">
+                  <motion.a 
+                    href={link.href} 
+                    className="text-slate-600 hover:text-slate-900 transition-colors font-figtree font-light relative group"
+                    variants={linkVariants}
+                    whileHover="hover"
+                  >
                     {link.name}
-                  </a>
+                    <motion.span 
+                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300 ease-out"
+                      initial={{ width: 0 }}
+                      whileHover={{ width: "100%" }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    />
+                  </motion.a>
                 </motion.li>
               ))}
             </ul>
@@ -124,7 +147,20 @@ export const Footer = () => {
             </div>
             <p className="text-xs text-slate-500 mt-3 font-figtree font-light">
               We care about your data. Read our{' '}
-              <a href="/privacy" className="underline hover:text-slate-800">privacy policy</a>.
+              <motion.a 
+                href="/privacy" 
+                className="underline hover:text-slate-800 relative group"
+                variants={linkVariants}
+                whileHover="hover"
+              >
+                privacy policy
+                <motion.span 
+                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300 ease-out"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                />
+              </motion.a>.
             </p>
           </motion.div>
         </div>

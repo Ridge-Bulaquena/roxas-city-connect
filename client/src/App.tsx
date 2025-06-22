@@ -19,6 +19,8 @@ import ContactPage from "./pages/contact";
 // Sub-app imports
 import HealthApp from "./apps/health/App";
 import EducationApp from "./apps/education/App";
+import HeroSection from "../components/hero-section";
+import { ServiceCard } from "../components/health/service-card";
 
 const queryClient = new QueryClient();
 

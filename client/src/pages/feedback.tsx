@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
+import { Layout } from '@/components/Layout';
 
 const FeedbackPage = () => {
   const [formData, setFormData] = useState({
@@ -27,32 +28,32 @@ const FeedbackPage = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50 flex items-center justify-center">
-        <div className="text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Thank You!</h1>
-          <p className="text-gray-600 mb-8">Your feedback has been submitted successfully. We'll review it and get back to you soon.</p>
-          <button 
-            onClick={() => setIsSubmitted(false)}
-            className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors"
-          >
-            Submit Another Feedback
-          </button>
+      <Layout>
+        <div className="min-h-[70vh] flex items-center justify-center text-center px-4">
+          <div>
+            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Thank You!</h1>
+            <p className="text-gray-600 mb-8">Your feedback has been submitted successfully.</p>
+            <button
+              onClick={() => setIsSubmitted(false)}
+              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors"
+            >
+              Submit Another Feedback
+            </button>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50">
+    <Layout>
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-yellow-500 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-light text-slate-800 mb-6">
               Share Your Feedback
-            </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-500 max-w-3xl mx-auto">
             Your voice matters! Help us improve Roxas City by sharing your thoughts, suggestions, and concerns.
           </p>
         </div>
@@ -193,7 +194,7 @@ const FeedbackPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

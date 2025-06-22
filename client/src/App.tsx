@@ -16,6 +16,9 @@ import FeedbackPage from "./pages/feedback";
 import PrivacyPage from "./pages/privacy";
 import TermsPage from "./pages/terms";
 import ContactPage from "./pages/contact";
+// Sub-app imports
+import HealthApp from "./apps/health/App";
+import EducationApp from "./apps/education/App";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,10 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          
+          {/* Sub-app routes */}
+          <Route path="/apps/health/*" element={<HealthApp />} />
+          <Route path="/apps/education/*" element={<EducationApp />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

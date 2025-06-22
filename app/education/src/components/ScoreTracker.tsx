@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { MapView } from "../components/MapView";
+import MapViewer from "@/components/map-viewer";
 
 export function ScoreTracker() {
   const [score] = useState(42);

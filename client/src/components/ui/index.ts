@@ -2,11 +2,11 @@
 // Reusable components for consistent design across all apps
 
 // Core Components
-export { Button } from './Button';
-export type { ButtonProps } from './Button';
+export { Button } from './button';
+export type { ButtonProps } from './button';
 
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card';
-export type { CardProps, CardHeaderProps, CardTitleProps, CardDescriptionProps, CardContentProps, CardFooterProps } from './Card';
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card';
+export type { CardProps, CardHeaderProps, CardTitleProps, CardDescriptionProps, CardContentProps, CardFooterProps } from './card';
 
 export { Header } from './Header';
 export type { HeaderProps, HeaderLink } from './Header';

@@ -4,12 +4,12 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/Layout";
-import Home from "@/pages/home";
-import ClinicLocator from "@/pages/locator";
-import VaccinationScheduler from "@/pages/scheduler";
-import AINurseAssistant from "@/pages/chat";
-import HealthDashboard from "@/pages/dashboard";
-import NotFound from "@/pages/not-found";
+import Home from "./pages/home";
+import ClinicLocator from "./pages/locator";
+import VaccinationScheduler from "./pages/scheduler";
+import AINurseAssistant from "./pages/chat";
+import HealthDashboard from "./pages/dashboard";
+import NotFound from "./pages/not-found";
 
 function Router() {
   return (

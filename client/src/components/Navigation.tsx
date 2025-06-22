@@ -80,25 +80,29 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
           title: 'Health Services', 
           desc: 'Clinics, emergency care, health programs',
           icon: Heart,
-          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png'
+          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png',
+          route: '/apps/health',
         },
         { 
           title: 'Education Support', 
           desc: 'Schools, scholarships, student assistance',
           icon: GraduationCap,
-          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png'
+          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png',
+          route: '/apps/education',
         },
         { 
           title: 'Social Welfare', 
           desc: 'PWD support, senior care, livelihood programs',
           icon: Users,
-          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png'
+          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png',
+          route: '/apps/social-welfare',
         },
         { 
           title: 'Public Works', 
           desc: 'Infrastructure, road repairs, utilities',
           icon: Wrench,
-          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png'
+          image: '/lovable-uploads/e8142eed-99fa-4dc3-acd3-0d372b04ae75.png',
+          route: '/apps/public-works',
         }
       ]
     },
@@ -285,6 +289,10 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: index * 0.1 }}
+                              onClick={() => subItem.route && navigate(subItem.route)}
+                              role="button"
+                              tabIndex={0}
+                              onKeyPress={e => { if (e.key === 'Enter' && subItem.route) navigate(subItem.route); }}
                             >
                               <div className="flex-shrink-0">
                                 <motion.div 
@@ -375,7 +383,14 @@ export const Navigation = ({ userType, setUserType }: NavigationProps) => {
                   <div className="font-medium text-gray-900 mb-2 font-inter">{item.title}</div>
                   <div className="space-y-1 ml-4">
                     {item.items.map((subItem, index) => (
-                      <div key={index} className="text-sm text-gray-600 py-1 font-figtree">
+                      <div
+                        key={index}
+                        className="text-sm text-gray-600 py-1 font-figtree cursor-pointer hover:text-blue-600"
+                        onClick={() => subItem.route && navigate(subItem.route)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={e => { if (e.key === 'Enter' && subItem.route) navigate(subItem.route); }}
+                      >
                         {subItem.title}
                       </div>
                     ))}

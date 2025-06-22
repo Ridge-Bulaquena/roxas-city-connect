@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { SchedulePicker } from "@/components/health/schedule-picker";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -145,12 +144,9 @@ export default function VaccinationScheduler() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Calendar Section */}
-          <div>
-            <SchedulePicker
-              onDateTimeSelect={handleDateTimeSelect}
-              selectedDate={selectedDate}
-              selectedTime={selectedTime}
-            />
+          <div className="flex flex-col items-center justify-center h-full p-8 bg-white border rounded shadow">
+            <div className="text-gray-500 text-center">Calendar feature coming soon.</div>
+            <div className="text-xs text-gray-400 mt-2">Select date and time manually below.</div>
           </div>
           
           {/* Booking Form Section */}

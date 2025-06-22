@@ -53,112 +53,6 @@ const slides: Slide[] = [
   }
 ];
 
-// Animated SVG Components
-const FloatingOrbs = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {[...Array(6)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-30"
-        style={{
-          left: `${20 + i * 15}%`,
-          top: `${30 + i * 10}%`,
-        }}
-        animate={{
-          y: [0, -20, 0],
-          opacity: [0.3, 0.6, 0.3],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 3 + i * 0.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-  </div>
-);
-
-const ConstellationLines = () => (
-  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
-    <motion.path
-      d="M 100 200 Q 300 100 500 200 T 900 200"
-      stroke="url(#gradient)"
-      strokeWidth="2"
-      fill="none"
-      initial={{ pathLength: 0, opacity: 0 }}
-      animate={{ pathLength: 1, opacity: 1 }}
-      transition={{ duration: 2, ease: "easeInOut" }}
-    />
-    <motion.path
-      d="M 200 300 Q 400 200 600 300 T 1000 300"
-      stroke="url(#gradient)"
-      strokeWidth="1.5"
-      fill="none"
-      initial={{ pathLength: 0, opacity: 0 }}
-      animate={{ pathLength: 1, opacity: 1 }}
-      transition={{ duration: 2.5, delay: 0.5, ease: "easeInOut" }}
-    />
-    <defs>
-      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.5" />
-        <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.5" />
-        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.5" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-const Waveform = () => (
-  <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
-    <svg className="w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <motion.path
-        d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z"
-        fill="url(#waveGradient)"
-        initial={{ d: "M0,120 Q300,120 600,120 T1200,120 L1200,120 L0,120 Z" }}
-        animate={{ d: "M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-      />
-      <defs>
-        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.1" />
-          <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.1" />
-          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.1" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-);
-
-const ParallaxBackground = ({ slideIndex }: { slideIndex: number }) => (
-  <div className="absolute inset-0 overflow-hidden">
-    {/* Gradient Background */}
-    <motion.div
-      className="absolute inset-0"
-      style={{
-        background: `linear-gradient(${135 + slideIndex * 30}deg, 
-          rgba(59, 130, 246, 0.05) 0%, 
-          rgba(255, 255, 255, 0.8) 50%, 
-          rgba(245, 158, 11, 0.05) 100%)`
-      }}
-      animate={{
-        scale: [1, 1.1, 1],
-        rotate: [0, 5, 0],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-    
-    {/* Animated Elements */}
-    <FloatingOrbs />
-    <ConstellationLines />
-    <Waveform />
-  </div>
-);
-
 const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) => {
   const navigate = useNavigate();
 
@@ -287,14 +181,27 @@ export const HeroSlider = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background */}
-      <ParallaxBackground slideIndex={currentSlide} />
-
+      {/* Video Background */}
+      <video
+        src="/Resources/roxas-city-bg-loop.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      />
+      {/* Overlay PNG */}
+      <img
+        src="/Resources/video-vignette-overlay.png"
+        alt=""
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 1 }}
+      />
       {/* Slide Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen">
         <SlideContent slide={slides[currentSlide]} isActive={true} />
       </div>
-
       {/* Navigation Controls */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <div className="flex items-center space-x-4">
@@ -307,7 +214,6 @@ export const HeroSlider = () => {
           >
             {isPlaying ? <Pause size={20} /> : <Play size={20} />}
           </motion.button>
-
           {/* Previous Button */}
           <motion.button
             onClick={prevSlide}
@@ -317,7 +223,6 @@ export const HeroSlider = () => {
           >
             <ChevronLeft size={20} />
           </motion.button>
-
           {/* Slide Indicators */}
           <div className="flex space-x-2">
             {slides.map((_, index) => (
@@ -332,7 +237,6 @@ export const HeroSlider = () => {
               />
             ))}
           </div>
-
           {/* Next Button */}
           <motion.button
             onClick={nextSlide}

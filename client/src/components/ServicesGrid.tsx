@@ -7,14 +7,14 @@ const SERVICES = [
     title: "Health Services",
     description: "Find nearby health stations, track medicine supply, and report health concerns.",
     cta: "Access Health Support",
-    route: "/apps/health",
+    route: "/y/apps/health",
   },
   {
     icon: "GraduationCap",
     title: "Education Support",
     description: "Scholarships, feeding programs, and lifelong learning resources for all citizens.",
     cta: "Support Learners",
-    route: "/apps/education",
+    route: "/y/apps/education",
   },
   {
     icon: "Handshake",
@@ -104,7 +104,7 @@ const cardVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: 'spring' as const,
       stiffness: 100,
       damping: 15,
     },

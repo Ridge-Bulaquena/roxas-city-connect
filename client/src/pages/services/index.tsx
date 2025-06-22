@@ -45,7 +45,7 @@ const cardVariants = {
         opacity: 1,
         y: 0,
         transition: {
-            type: 'spring',
+            type: 'spring' as const,
             stiffness: 120,
         },
     },
@@ -54,12 +54,7 @@ const cardVariants = {
 const ServicesIndexPage = () => {
   return (
     <Layout>
-      <div 
-        className="min-h-full w-full py-24 px-4 sm:px-6 lg:px-8"
-        style={{
-            backgroundImage: 'radial-gradient(circle at top left, #e6ecf2, #eef2f9 70%)'
-        }}
-      >
+      <div className="w-full py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
             <motion.h1 
                 className="text-5xl md:text-6xl font-light text-slate-800"

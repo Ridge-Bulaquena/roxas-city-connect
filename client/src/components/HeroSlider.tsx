@@ -8,9 +8,11 @@ interface Slide {
   subtitle: string;
   description?: string;
   cta1?: string;
-  cta2?: string;
   cta1Route?: string;
+  cta2?: string;
   cta2Route?: string;
+  cta3?: string;
+  cta3Route?: string;
 }
 
 const slides: Slide[] = [
@@ -19,9 +21,11 @@ const slides: Slide[] = [
     subtitle: "Your City, Your Voice, Your Future",
     description: "Roxas City Connect empowers every citizen to participate in building our community. Access city services, share your ideas, and stay connected with your local government.",
     cta1: "Get Started",
-    cta2: "City Services / Share Feedback",
-    cta1Route: "/services",
-    cta2Route: "/share-feedback"
+    cta1Route: "/get-started",
+    cta2: "City Services",
+    cta2Route: "/services",
+    cta3: "Share Feedback",
+    cta3Route: "/feedback",
   },
   {
     title: "Your City, Your Voice.",
@@ -159,9 +163,7 @@ const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) 
   const navigate = useNavigate();
 
   const handleCtaClick = (route?: string) => {
-    if (route) {
-      navigate(route);
-    }
+    if (route) navigate(route);
   };
 
   return (
@@ -211,7 +213,7 @@ const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) 
             )}
 
             {/* CTAs */}
-            {(slide.cta1 || slide.cta2) && (
+            {(slide.cta1 || slide.cta2 || slide.cta3) && (
               <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                 initial={{ opacity: 0, y: 30 }}
@@ -236,6 +238,16 @@ const SlideContent = ({ slide, isActive }: { slide: Slide; isActive: boolean }) 
                     onClick={() => handleCtaClick(slide.cta2Route)}
                   >
                     {slide.cta2}
+                  </motion.button>
+                )}
+                {slide.cta3 && (
+                  <motion.button
+                    className="px-8 py-4 bg-white text-yellow-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-yellow-200"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleCtaClick(slide.cta3Route)}
+                  >
+                    {slide.cta3}
                   </motion.button>
                 )}
               </motion.div>
